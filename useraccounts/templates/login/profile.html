@@ -77,10 +77,10 @@
     <h1>Thông tin cá nhân</h1>
     <p><label style="color: #000;">Tên: {{user.username}}</label></p>
     <p><label style="color: #000;">Email: {{user.email}}</label></p>
-
+    <p><label style="color: #000;">Họ và tên: {{user.first_name}} {{user.last_name}}</label></p>
 
     <p><a href="{% url 'logout' %}" class="logOut">LOGOUT</a>
-    <a href="{% url 'home' %}" class="logOut">Go Back</a></p>
+    <a href="{% url 'home' %}" class="logOut">Go Back</a> <a href="{% url 'accountst' %}" class="update">UPDATE</a></p>
 
 {% endif %}
 </form>

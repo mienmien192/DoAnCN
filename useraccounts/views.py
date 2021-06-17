@@ -7,7 +7,7 @@ from .models import *
 from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-
+import json
 def register(request):
     form = CreateUserForm()
 
@@ -64,14 +64,13 @@ def profile(request):
 
 
 def accountSettings(request):
-
     student = request.user.student
     form = StudentForm(instance=student)
-
     if request.method == 'POST':
         form = StudentForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
+
 
     context = {'form': form}
     return render(request, 'login/account_setting.html', context)
