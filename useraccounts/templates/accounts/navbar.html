@@ -1,0 +1,96 @@
+{% load static %}
+<style>
+
+    .logIn, .signUp{
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 70px;
+    text-align: center;
+    align-item: center;
+    background: pink;
+    padding-top: 10px;
+    }
+
+</style>
+<header class="header" >
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4">
+                    <div class="header__top__left">
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8">
+                    <div class="header__top__right">
+
+                        <div class="header__top__right__language">
+
+                            <div>Vietnam</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="#">Vietnam</a></li>
+                                <li><a href="#">English</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__top__right__social">
+                           <div class="log">
+                                {% if user.username %}
+                                     <p>Xin chào, <a href="{% url 'accountst' %}">{{ user.username }}</a><a href="{% url 'logout' %}" class="logOut">LOGOUT</a></p>
+
+                                {% else %}
+                                    <p><a class="logIn" href="{% url 'login' %}">LOGIN</a> <a class="signUp" href="{% url 'register' %}">SIGN UP</a></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="#"><img src="{% static 'img/edtech-logo.jpg'%}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="">Giới thiệu</a></li>
+
+                        <li><a href="#">Phòng Thi</a>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="#">Tự luyện</a></li>
+                                <li><a href="#">Đánh giá năng lực</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="">Thư viện</a></li>
+                        <li><a href="">Học phí</a></li>
+                        <li><a href="">Hỗ trợ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href=""><i class="fa fa-shopping-cart"></i>
+                            <span id="num_cart">
+
+                         </span>
+                     </a></li>
+                 </ul>
+
+             </div>
+         </div>
+     </div>
+     <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+</header>

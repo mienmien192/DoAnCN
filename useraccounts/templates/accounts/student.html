@@ -1,0 +1,33 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Student</h5>
+
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                <th>id</th>
+                <th>acount</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Avatar</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+                {% for student in student %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.account}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.avatar}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

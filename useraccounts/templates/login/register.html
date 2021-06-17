@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Register</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://localhost:8080/codePHP/DOAN/public/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="http://localhost:8080/codePHP/DOAN/public/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="http://localhost:8080/codePHP/DOAN/public/admin/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    .login-page{
+      background: url({% static './img/bgLogin.jpg'%});
+      background-size:cover;
+
+    }
+    .login-box{
+
+    }
+    .login-card-body{
+      background: rgba(255, 255, 255, .5);
+      border-radius: 10px;
+    }
+    .login-logo b{
+        font-weight: bold;
+        color: #000;
+        font-family: 'Sacramento', cursive;
+        font-size: 60px;
+    }
+    .card{
+      background: none;
+    }
+  </style>
+</head>
+<body class="login-page">
+	<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Sign Up</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg" style="color: red">
+      	      </p>
+
+      <form method="post">
+          {% csrf_token %}
+        <div class="input-group mb-3">
+
+          {{form.username}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+
+          {{form.email}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+          <div class="input-group mb-3">
+          {{form.password1}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+          <div class="input-group mb-3">
+
+          {{form.password2}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-warning btn-block" name="register">Sign Up</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      {{form.errors}}
+
+      <!-- /.social-auth-links -->
+              <p class="mb-1">
+        <a href="reset-password.php" style="color: #000"  >Quên mật khẩu? </a>
+      </p>
+      <p class="mb-0">
+        <a href="{% url 'login' %}" style="color: #000" class="text-center">Đã có tài khoản? Đăng nhập</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+    <script>
+        var  form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Username';
+        form_fields[2].placeholder='Email';
+        form_fields[3].placeholder='Enter Password';
+        form_fields[4].placeholder='Re-enter Password';
+
+        for (var field in form_fields){
+            form_fields[field].className += ' form-control'
+        }
+    </script>
+</body>
+</html>
+
