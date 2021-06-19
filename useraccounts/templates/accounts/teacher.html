@@ -1,0 +1,34 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+        <div class="teacher">
+            <div class="row">
+                {% for teachers in teachers %}
+                <div class="col-lg-3 col-md-4 col-sm-6" >
+                    <div class="featured__item" >
+                        <div class="featured__item__pic set-bg"style="border-radius: 50%"  >
+                            {% if teachers.avatar %}
+                            <img src="{{teachers.avatar.url}}" alt="" style="width:300px; height: 300px ">
+
+                            <ul class="featured__item__pic__hover">
+
+                                <li><a href=""><i class="fa fa-retweet"></i></a></li>
+
+                            </ul>
+                        </div>
+                        <div class="featured__item__text" >
+                            <h6><a href="#" style="text-decoration: none;font-size:20px"><strong>{{teachers.fullname}}</strong></a></h6>
+
+                        </div>
+                    </div>
+                {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

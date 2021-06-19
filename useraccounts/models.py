@@ -52,3 +52,13 @@ class OrderItem(models.Model):
     order = models.ForeignKey(OrderCourse, on_delete=models.SET_NULL, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True)
+
+class Teacher(models.Model):
+    fullname = models.CharField(max_length=200, null=True)
+    account = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    avatar = models.ImageField(default='profile1.png', upload_to='teacherfile', max_length=254, blank=True, null=True)
+    description = models.TextField(default='')
+    def __str__(self):
+        return self.fullname

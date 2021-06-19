@@ -29,6 +29,7 @@ urlpatterns = [
     path('course/', views.course, name="course"),
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
+    path('teacher/', views.teacher, name="teacher"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -25,11 +25,11 @@
             </div>
         <div class="row featured__filter">
             {% for courses in courses %}
-            <div class="col-lg-3 col-md-4 col-sm-6" style="border-radius: 20px">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" >
+            <div class="col-lg-3 col-md-4 col-sm-6" >
+                    <div class="featured__item" >
+                        <div class="featured__item__pic set-bg"style="border-radius: 20px"  >
                             {% if courses.courseImg %}
-                            <img src="{{courses.courseImg.url}}" alt="" style="width:300px; height: 300px">
+                            <img src="{{courses.courseImg.url}}" alt="" style="width:300px; height: 300px ">
                                 
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>

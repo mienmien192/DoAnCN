@@ -98,3 +98,7 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'courses/checkout.html')
+def teacher(request):
+    teachers = Teacher.objects.all()
+    context = {'teachers':teachers}
+    return render(request, 'accounts/teacher.html',context)
