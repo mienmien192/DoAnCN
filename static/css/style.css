@@ -3476,3 +3476,75 @@ ol {
         font-size: 24px;
     }
 }
+/*=======================================
+   # Contact page
+=========================================*/
+
+:focus {
+    outline: 0 !important;
+}
+
+#Contact {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-input input, .form-input textarea {
+    margin-bottom: 30px;
+    width: 100%;
+}
+select.form-control, textarea.form-control, input.form-control[type="text"], input.form-control[type="password"], input.form-control[type="datetime"], input.form-control[type="datetime-local"], input.form-control[type="date"], input.form-control[type="month"], input.form-control[type="time"], input.form-control[type="week"], input.form-control[type="number"], input.form-control[type="email"], input.form-control[type="url"], input.form-control[type="search"], input.form-control[type="tel"], input.form-control[type="color"] {
+    border-radius: 0;
+    font-size: 12px;
+}
+input[type=text], input[type=password], input[type=email], textarea, input[type=file] {
+    display: inline-block;
+    /*float: left;*/
+    padding: 10px 15px;
+    border: 0;
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0;
+}
+.form-input textarea {
+    height: 174px;
+}
+.Contact-Info h4 {
+    margin-top: 0;
+}
+.Block-Contact {
+    padding: 0;
+    margin-top: 15px;
+}
+.Block-Contact p {
+    font-size: 12px;
+    color: #373636;
+    margin-bottom: 5px;
+}
+.Block-Contact ul{
+    list-style: none;
+    padding: 0;
+}
+.Block-Contact ul li {
+    margin-bottom: 5px;
+}
+.Block-Contact ul li i {
+    color: #05AED5;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 16px;
+}
+.Block-Contact ul li span {
+    color: #a6a6a6;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 13px;
+}
+.form-submit input {
+    background: #05AED5;
+}

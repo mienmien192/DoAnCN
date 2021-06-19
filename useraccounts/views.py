@@ -102,3 +102,6 @@ def teacher(request):
     teachers = Teacher.objects.all()
     context = {'teachers':teachers}
     return render(request, 'accounts/teacher.html',context)
+def contact(request):
+    context = {}
+    return render(request, 'accounts/contact.html')
