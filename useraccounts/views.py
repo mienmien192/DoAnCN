@@ -8,6 +8,8 @@ from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 import json
+
+
 def register(request):
     form = CreateUserForm()
 
@@ -20,27 +22,33 @@ def register(request):
 
             return redirect('login')
 
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'login/register.html', context)
+
 
 def home(request):
     return render(request, 'accounts/base.html')
+
+
 def dashboard(request):
     courses = Courses.objects.all()
     student = Student.objects.all()
 
-    context = {'courses':courses, 'student':student}
+    context = {'courses': courses, 'student': student}
     return render(request, 'accounts/dashboard.html', context)
+
 
 def courses(request):
     courses = Courses.objects.all()
-    return render(request, 'accounts/courses.html',{'courses':courses})
+    return render(request, 'accounts/courses.html', {'courses': courses})
+
 
 def student(request, pk_test):
-
     student = Student.objects.get(id=pk_test)
     context = {'student': student}
-    return render(request, 'accounts/student.html',context)
+    return render(request, 'accounts/student.html', context)
+
+
 def loginUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -52,12 +60,15 @@ def loginUser(request):
         else:
             messages.info(request, 'Tài khoản hoặc mật khẩu không đúng')
 
-    context= {}
+    context = {}
 
-    return render(request, 'login/login.html',context)
+    return render(request, 'login/login.html', context)
+
+
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
 
 def profile(request):
     return render(request, 'login/profile.html')
@@ -71,6 +82,19 @@ def accountSettings(request):
         if form.is_valid():
             form.save()
 
-
     context = {'form': form}
     return render(request, 'login/account_setting.html', context)
+
+def course(request):
+    courses = Courses.objects.all()
+    context = {'courses':courses}
+    return render(request, 'courses/course.html', context)
+    # store
+
+def cart(request):
+    context = {}
+    return render(request, 'courses/cart.html')
+
+def checkout(request):
+    context = {}
+    return render(request, 'courses/checkout.html')

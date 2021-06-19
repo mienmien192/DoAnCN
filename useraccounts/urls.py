@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
+
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
@@ -26,6 +26,9 @@ urlpatterns = [
          name="password_reset_confirm"),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = 'login/password_reset_done.html'),
          name="password_reset_complete"),
+    path('course/', views.course, name="course"),
+    path('cart/', views.cart, name="cart"),
+    path('checkout/', views.checkout, name="checkout"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

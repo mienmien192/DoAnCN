@@ -1,0 +1,70 @@
+{% extends 'accounts/main.html' %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="{% url 'home' %}" class="btn btn-outline">Go back</a>
+            <br>
+            <br>
+
+        </div>
+        <br>
+
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+
+
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="" alt=""></div>
+                <div style="flex:2"><strong></strong></div>
+                <div style="flex:1"><strong></strong></div>
+
+                <div style="flex:1"><strong></strong></div>
+
+            </div>
+
+        </div>
+        <table class="table">
+                <tr>
+
+                    <th><h5>Tổng cộng: <strong> VND</strong></h5></th>
+
+                </tr>
+            </table>
+    </div>
+
+            <div class="col-lg-6">
+            <div class="shoping__continue">
+                <div class="shoping__discount">
+                    <h5>Mã giảm giá</h5>
+                    <form action="#">
+                        <input type="text" placeholder="Enter your coupon code">
+                        <button type="submit" class="site-btn">APPLY COUPON</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="shoping__checkout">
+                <h5>Đơn hàng của bạn</h5>
+                <ul>
+                    <li>Tổng cộng <span>
+                    </span>
+                    </li>
+
+                </ul>
+                <a href="{% url 'checkout' %}" class="primary-btn">KIỂM TRA</a>
+            </div>
+        </div>
+
+</div>
+</div>
+{% endblock%}

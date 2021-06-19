@@ -1,0 +1,73 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="checkout__form">
+            <h4>Thông tin người dùng</h4>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Tên<span>*</span></p>
+                                    <input type="text" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Email<span>*</span></p>
+                                    <input type="email" value="">
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                               <h4> Chọn phương thức thanh toán</h4>
+                            </div>
+                            <div class="col-lg-8" >
+                                    <h4><img style="width:40px; height: 40px;" src="{% static './img/logo-momo.jpg' %}" alt="">&emsp;<a
+                                            href="" style="text-decoration: none; color: #000;">MOMO Wallet</a>
+                                        <br><p>&emsp;&emsp;&emsp;&emsp;Thanh toán nhanh trong 5 giây bằng cách dùng ứng dụng &emsp;&emsp;&emsp;&emsp;Momo quét mã QR</p> </h4>
+
+                            </div>
+                             <div class="col-lg-8" >
+                                    <h4><img style="width:40px; height: 40px;" src="{% static './img/atm.png' %}" alt="">&emsp;<a
+                                            href="" style="text-decoration: none; color: #000;">Thanh toán bằng thẻ Visa, Master, JCB,..</a>
+                                        <br><p>&emsp;&emsp;&emsp;&emsp;Hỗ trợ thẻ debit và credit (Visa, Mastercard, JCB) thông &emsp;&emsp;&emsp;&emsp;qua cổng thanh toán Onepay</p> </h4>
+
+                            </div>
+                             <div class="col-lg-8" >
+                                    <h4><img style="background: #000; width:40px; height: 40px;" src="{% static './img/atm2.png' %}" alt="">&emsp;<a
+                                            href="" style="text-decoration: none; color: #000;">Local ATM Cards</a>
+                                        <br><p>&emsp;&emsp;&emsp;&emsp;Hỗ trợ thẻ ATM tất cả các ngân hàng Việt Nam: BIDV,
+                                            &emsp;&emsp;&emsp;&emsp;Vietcombank, Techcombank, VP Bank...</p> </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4>Đơn đặt hàng</h4>
+                            <div class="checkout__order__products">Khóa học <span>Tổng</span>
+                            </div>
+                            <div class="checkout__order__total">Giá gốc
+                                <div class="checkout__order__subtotal">Giảm giá
+
+                                </div>
+                                <div class="thanhtoan">
+                                    Phương thức thanh toán
+                                </div>
+
+                            </div>
+                            <div class="checkout__order__total">Tổng giá trị
+                                <button type="submit" class="site-btn datHang">ĐẶT HÀNG</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}

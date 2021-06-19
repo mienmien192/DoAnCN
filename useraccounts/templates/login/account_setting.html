@@ -2,7 +2,7 @@
 {% block content %}
 <style>
     .profile-pic{
-    border : 1px solid #000;
+    border : 2px solid #000;
     border-radius: 50%;
     }
 </style>
@@ -13,8 +13,9 @@
             <hr>
             <h3>Update Profile</h3>
             <hr>
+            {% if user.student.avatar %}
             <img src="{{request.user.student.avatar.url}}" class="profile-pic" alt="">
-
+            {% endif %}
         </div>
     </div>
     <div class="col-md-8">
