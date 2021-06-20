@@ -115,3 +115,10 @@ def courseGrid(request):
     libcourse = LibCourse.objects.all()
     context = {}
     return render(request, 'courses/coursesGrid.html',{'libcourse':libcourse})
+def tuLuyen(request):
+    context = {}
+    return render(request, 'exam/tuluyen.html')
+
+def infoHocPhi(request):
+    context = {}
+    return render(request, 'accounts/infoHocPhi.html')

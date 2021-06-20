@@ -29,6 +29,8 @@ urlpatterns = [
 
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
+    path('tuluyen/', views.tuLuyen, name="tuluyen"),
+    path('hocphi/', views.infoHocPhi, name="hocphi"),
     path('courseGrid/', views.courseGrid, name="courseGrid"),
 ]
 
