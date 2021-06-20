@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# Create your views here.
+
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from .models import *
@@ -8,7 +8,7 @@ from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 import json
-
+User = settings.AUTH_USER_MODEL
 
 def register(request):
     form = CreateUserForm()
@@ -27,7 +27,10 @@ def register(request):
 
 
 def home(request):
-    return render(request, 'accounts/base.html')
+    teachers = Teacher.objects.all()
+    courses = Courses.objects.all()
+    context = {'teachers': teachers, 'courses': courses}
+    return render(request, 'accounts/base.html', context)
 
 
 def dashboard(request):
@@ -92,13 +95,18 @@ def course(request):
     # store
 
 def cart(request):
-    context = {}
-    return render(request, 'courses/cart.html')
+    if request.user.is_authenticated:
+        student = request.user.student
+        order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+        items = order.orderitem_set.all()
+
+    else:
+        items = []
+
+    courses = Courses.objects.all()
+    context = {'items':items,'courses':courses}
+    return render(request, 'courses/cart.html', context)
 
 def checkout(request):
     context = {}
     return render(request, 'courses/checkout.html')
-def teacher(request):
-    teachers = Teacher.objects.all()
-    context = {'teachers':teachers}
-    return render(request, 'accounts/teacher.html',context)

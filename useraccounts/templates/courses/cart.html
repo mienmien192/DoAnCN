@@ -20,16 +20,16 @@
                 <div style="flex:1"><strong>Total</strong></div>
             </div>
 
-
+            {% for items in items %}
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="" alt=""></div>
-                <div style="flex:2"><strong></strong></div>
-                <div style="flex:1"><strong></strong></div>
+                <div style="flex:2"><img class="row-image" src="{{item.courses.courseImg.url}}" alt=""></div>
+                <div style="flex:2"><strong>{{item.courses.nameCourse}}</strong></div>
+                <div style="flex:1"><strong>{{item.courses.price}}</strong></div>
 
-                <div style="flex:1"><strong></strong></div>
+                <div style="flex:1"><strong>{{item.courses.price}}</strong></div>
 
             </div>
-
+            {% endfor %}
         </div>
         <table class="table">
                 <tr>
@@ -39,6 +39,7 @@
                 </tr>
             </table>
     </div>
+
 
             <div class="col-lg-6">
             <div class="shoping__continue">

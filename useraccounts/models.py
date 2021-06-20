@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 class Student(models.Model):
-    user = models.OneToOneField(User, null=True,blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
     fullname = models.CharField(max_length=200, null=True)
     account = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)

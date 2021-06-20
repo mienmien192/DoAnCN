@@ -38,7 +38,10 @@
                         <div class="header__top__right__social">
                            <div class="log">
                                 {% if user.username %}
-                                     <p>Xin chào, <a href="{% url 'profile' %}">{{ user.username }}</a><a href="{% url 'logout' %}" class="logOut">LOGOUT</a></p>
+                                     <p style="color: #000;font-size: 18px">Xin chào,
+                                         <a href="{% url 'profile' %}" style="text-decoration: none; font-size: 18px">
+                                         <strong>{{ user.username }}</strong></a>
+                                         <a href="{% url 'logout' %}" class="logOut" style="text-decoration: none; font-size: 18px">LOGOUT</a></p>
 
                                 {% else %}
                                     <p><a class="logIn" href="{% url 'login' %}">LOGIN</a> <a class="signUp" href="{% url 'register' %}">SIGN UP</a></p>
