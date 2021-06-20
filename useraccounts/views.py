@@ -110,3 +110,8 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'courses/checkout.html')
+
+def courseGrid(request):
+    libcourse = LibCourse.objects.all()
+    context = {}
+    return render(request, 'courses/coursesGrid.html',{'libcourse':libcourse})

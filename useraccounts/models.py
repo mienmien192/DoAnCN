@@ -62,3 +62,24 @@ class Teacher(models.Model):
     description = models.TextField(default='')
     def __str__(self):
         return self.fullname
+
+class LibCourse(models.Model):
+    CATEGORY = (
+        ('1', 'DH-CD'),
+        ('2', 'Bo tro'),
+        ('3', 'luyen thi DH'),
+        ('4', 'Boi duong HSG'),
+        ('6', 'Lop6-9'),
+        ('7', 'Luyen thi vao 6'),
+        ('8', 'Lop1-5'),
+        ('9', 'Hoc nghe')
+    )
+    nameLCourse = models.CharField(max_length=200, null=True)
+    description = models.TextField(default='')
+    price = models.IntegerField(default=0)
+    category = models.CharField(max_length=200, null=True, choices=CATEGORY)
+    discount = models.CharField(max_length=200, null=True)
+    courseImg = models.ImageField(
+        upload_to='courseFile',
+        max_length=254, blank=True, null=True
+    )
