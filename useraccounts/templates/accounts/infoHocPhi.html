@@ -2,5 +2,63 @@
 {% load static %}
 
 {% block content%}
+<body>
+    <div class="container-hocphi" >
+        <div class="intro">
+            <div>
+           <h1>Các bước nộp học phí</h1>
+            </div>
+        </div>
+        <div class="allstep">
+            <div class="step-inner">
+                <div class="item">
+                    <a href="#"></a>
+                    <div class="inner">
+                        <a href="#">
+                        <img src="{% static './img/deposit.png'%}" alt="">
+                        </a>    
+                        <p><a href="#">Bước 1. Nạp tiền</a></p> 
+                    </div>
+                </div>
 
+                <div class="arrow"></div>
+                
+                <div class="item">
+                    <a href="#"></a>
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static './img/select-course.png'%}" alt="">
+                        </a>    
+                        <p><a href="#">Bước 2. Chọn khóa học</a></p> 
+                    </div>
+                </div>
+           
+                <div class="arrow"></div>
+
+                <div class="item">
+                    <a href="#"></a>
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static './img/deposit.png'%}" alt="">
+                        </a>    
+                        <p><a href="#">Bước 3. Xác nhận</a></p> 
+                    </div>
+                </div>
+           
+        </div>
+    </div>
+    
+        <div class="recharge">
+           <a href="#">Nạp tiền</a>
+        </div>
+    
+        <div class="note">
+            <p>Lưu ý</p>
+            <p>* Thời gian học: 24h/24h</p>
+            <p>* Chuyển đổi khóa học <a href="#">đây.</a> </p>
+            <p>* Chính sách chuyển đổi, nâng cấp khoa học, xem tại <a href="#">đây.</a> </p>
+            <p>* Chính sách miễn giảm học phí, xem tại <a href="#">đây.</a> </p>
+        </div>
+    </div>
+</body>
 {% endblock%}
