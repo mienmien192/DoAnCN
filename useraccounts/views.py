@@ -142,3 +142,7 @@ def updateItem(request):
 def contact(request):
     context = {}
     return render(request, 'accounts/contact.html')
+
+def detailTeacher(request):
+    context = {}
+    return render(request, 'courses/detailTeacher.html')

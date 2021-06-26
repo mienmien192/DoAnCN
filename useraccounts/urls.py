@@ -33,7 +33,8 @@ urlpatterns = [
     path('hocphi/', views.infoHocPhi, name="hocphi"),
     path('courseGrid/', views.courseGrid, name="courseGrid"),
     path('update_item/', views.updateItem, name="update_item"),
-    path('contact/', views.contact, name="contact")
+    path('contact/', views.contact, name="contact"),
+    path('detailTeacher/', views.detailTeacher, name="detailTeacher")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

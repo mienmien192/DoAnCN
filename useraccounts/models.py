@@ -67,6 +67,10 @@ class Teacher(models.Model):
     account = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
+    address = models.CharField(max_length=200, null=True)
+    subject = models.CharField(max_length=200, null=True)
+    degree = models.CharField(max_length=200, null=True)
+    facebook = models.CharField(max_length=200, null=True)
     avatar = models.ImageField(default='profile1.png', upload_to='teacherfile', max_length=254, blank=True, null=True)
     description = models.TextField(default='')
     def __str__(self):
