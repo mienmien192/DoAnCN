@@ -1,7 +1,7 @@
-var updateButtons = document.getElementsByClassName('update-cart')
+var updateBtns = document.getElementsByClassName('update-cart')
 
-    for(var i = 0; i < updateButtons.length; i++){
-        updateButtons[i].addEventListener('click', function(){
+    for(var i = 0; i < updateBtns.length; i++){
+        updateBtns[i].addEventListener('click', function(){
         var courseId = this.dataset.courses
         var action = this.dataset.action
         console.log('courseId: ', courseId, 'action: ', action)
@@ -36,7 +36,7 @@ var updateButtons = document.getElementsByClassName('update-cart')
 
             .then((data) => {
                 console.log('data: ', data)
-                location.reload()
+
             })
         }
 

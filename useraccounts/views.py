@@ -132,12 +132,21 @@ def infoHocPhi(request):
     return render(request, 'accounts/infoHocPhi.html')
 
 def updateItem(request):
-    data = json.loads(request.data)
+    data = json.loads(request.body)
     courseId = data['courseId']
     action = data['action']
 
     print('Action:', action)
     print('courseId:', courseId)
+
+    student = request.user.student
+    courses = Courses.objects.get(id=courseId)
+
+    order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, courses=courses)
+
+    orderItem.save()
+
     return JsonResponse('Item was added.', safe=False)
 def contact(request):
     context = {}
