@@ -144,5 +144,7 @@ def contact(request):
     return render(request, 'accounts/contact.html')
 
 def detailTeacher(request):
-    context = {}
-    return render(request, 'courses/detailTeacher.html')
+    teachers = Teacher.objects.all()
+    context = {'teachers': teachers}
+    
+    return render(request, 'courses/detailTeacher.html',context)

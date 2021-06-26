@@ -31,10 +31,12 @@
 
         <div id="main">
     <div class="wrapper">
+        {% for teachers in teachers %}
         <div class="pf-about clearfix">
+            {% if teachers.avatar %}
             <div class="left-a">
                 <div class="image">
-                    <img src="https://hocmai.vn/file.php/1/Anh_giao_vien_THCS_va_TH/Van_Trinh_Quynh_An/470X470.png" alt="Văn Trịnh Quỳnh An">
+                    <img src="{{teachers.avatar.url}}" alt="Văn Trịnh Quỳnh An">
                 </div>
             </div>
             <div class="right-a">
@@ -48,7 +50,7 @@
                                 <div class="icoleft"><span class="ico-user"></span></div>
                                 <div class="text">
                                     <strong>Họ và tên</strong>
-                                    <p class="big">Văn Trịnh Quỳnh An</p>
+                                    <p class="big">{{teachers.fullname}}</p>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +59,7 @@
                                 <div class="icoleft"><span class="ico-work"></span></div>
                                 <div class="text">
                                     <strong>Nơi công tác:</strong>
-                                    <p class="big">Trường THPT Gia Định, TP.HCM</p>
+                                    <p class="big">{{teachers.address}}</p>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +69,7 @@
                                     <div class="icoleft"><span class="ico-subject"></span></div>
                                     <div class="text">
                                         <strong>Môn dạy:</strong>
-                                         <p class="big">Ngữ văn</p>
+                                         <p class="big">{{teachers.subject}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +78,7 @@
                                     <div class="icoleft"><span class="ico-degree"></span></div>
                                     <div class="text">
                                         <strong>Học vị:</strong>
-                                        <p class="big">Thạc sĩ</p>
+                                        <p class="big">{{teachers.degree}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +90,7 @@
                                     <div class="text">
                                         <strong>Email:</strong>
                                         <p>
-                                         <a href="mailto:gv.anvtq@hocmai.edu.vn		">gv.anvtq@hocmai.edu.vn		</a>
+                                         <a href="{{teachers.email}}	">{{teachers.email}}		</a>
                                          </p>
                                     </div>
                                 </div>
@@ -99,7 +101,7 @@
                                     <div class="text">
                                         <strong>Facebook:</strong>
                                         <p>
-                                         <a href="https://www.facebook.com/quynhan1989		">https://www.facebook.com/quynhan1989		</a>
+                                         <a href="{{teachers.facebook}}">{{teachers.facebook}}		</a>
                                         </p>
                                     </div>
                                 </div>
@@ -108,7 +110,9 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
+        {% endfor %}
     </div>
 </div>
 </body>
