@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="#"><img src="{% static 'img/edtech-logo.jpg'%}" alt=""></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'img/edtech-logo.jpg'%}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -81,7 +81,7 @@
                         </li>
                         <li><a href="{% url 'courseGrid' %}">Thư viện</a></li>
                         <li><a href="{% url 'hocphi' %}">Học phí</a></li>
-                        <li><a href="">Hỗ trợ</a></li>
+                        <li><a href="{% url 'contact' %}">Hỗ trợ</a></li>
                     </ul>
                 </nav>
             </div>
