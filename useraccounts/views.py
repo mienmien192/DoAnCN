@@ -139,3 +139,6 @@ def updateItem(request):
     print('Action:', action)
     print('courseId:', courseId)
     return JsonResponse('Item was added.', safe=False)
+def contact(request):
+    context = {}
+    return render(request, 'accounts/contact.html')
