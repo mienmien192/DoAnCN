@@ -4,14 +4,21 @@
     .logIn, .signUp{
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     border-radius: 5px;
     width: 70px;
     text-align: center;
     align-item: center;
-    background: pink;
+    background: transparent;
     padding-top: 10px;
     }
+    .signUp:hover{
+    color: #fff;
+    }
+    .logIn:hover{
+    color: #fff;
+    }
+
 
 </style>
 <header class="header" >
@@ -44,7 +51,7 @@
                                          <a href="{% url 'logout' %}" class="logOut" style="text-decoration: none; font-size: 18px">LOGOUT</a></p>
 
                                 {% else %}
-                                    <p><a class="logIn" href="{% url 'login' %}">LOGIN</a> <a class="signUp" href="{% url 'register' %}">SIGN UP</a></p>
+                                    <p><a class="logIn" href="{% url 'login' %}">SIGN IN</a> <a class="signUp" href="{% url 'register' %}">SIGN UP</a></p>
                                 {% endif %}
                             </div>
                         </div>

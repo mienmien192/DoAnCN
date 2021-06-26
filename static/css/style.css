@@ -903,6 +903,24 @@ ol {
     transition: all, 0.5s;
 }
 
+.featured__item__pic__hover li button {
+    font-size: 16px;
+    color: #1c1c1c;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    background: #ffffff;
+    display: block;
+    border-radius: 50%;
+    -webkit-transition: all, 0.5s;
+    -moz-transition: all, 0.5s;
+    -ms-transition: all, 0.5s;
+    -o-transition: all, 0.5s;
+    transition: all, 0.5s;
+}
+
 .featured__item__pic__hover li a i {
     position: relative;
     transform: rotate(0);
