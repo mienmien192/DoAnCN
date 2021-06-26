@@ -47,12 +47,21 @@ class OrderCourse(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
 class OrderItem(models.Model):
     courses = models.ForeignKey(Courses, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(OrderCourse, on_delete=models.SET_NULL, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True)
 
+    @property
+    def get_total(self):
+        total = self.courses.price
+        return total
 class Teacher(models.Model):
     fullname = models.CharField(max_length=200, null=True)
     account = models.CharField(max_length=200, null=True)

@@ -1,9 +1,12 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content%}
+{% include 'accounts/sectionhero1.html' %}
 <div class="container">
     <div class="row">
+
         <div class="checkout__form">
+             <a href="{% url 'cart' %}" class="btn btn-outline">Go back</a>
             <h4>Thông tin người dùng</h4>
             <form action="#">
                 <div class="row">
@@ -48,21 +51,21 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
+
                             <h4>Đơn Tổng</h4>
-                            <div class="checkout__order__products">Khóa học <span>Tổng</span>
+                            <h5><strong>Khóa học:</strong></h5> <br>
+                            {% for item in items %}
+                            <div class="checkout__order__products">{{item.courses.nameCourse}}<span>
+                                <strong>{{item.courses.price|floatformat:3}} VND</strong></span>
                             </div>
-                            <div class="checkout__order__total">Giá gốc
-                                <div class="checkout__order__subtotal">Giảm giá
 
-                                </div>
-                                <div class="thanhtoan">
-                                    Phương thức thanh toán
-                                </div>
+                             {% endfor %}
+                            <br>
+                            <div class="checkout__order__total"><h4><strong>Tổng giá trị</strong> </h4> {{order.get_cart_total|floatformat:3}} VND
+                                <button type="submit" class="site-btn">THANH TOÁN</button>
+                            </div>
 
-                            </div>
-                            <div class="checkout__order__total">Tổng giá trị
-                                <button type="submit" class="site-btn datHang">THANH TOÁN</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>

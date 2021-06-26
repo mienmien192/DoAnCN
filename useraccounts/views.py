@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.http import JsonResponse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from .models import *
@@ -102,14 +102,22 @@ def cart(request):
 
     else:
         items = []
+        order = {'get_cart_total':0}
 
-    courses = Courses.objects.all()
-    context = {'items':items,'courses':courses}
+    context = {'items':items, 'order':order}
     return render(request, 'courses/cart.html', context)
 
 def checkout(request):
-    context = {}
-    return render(request, 'courses/checkout.html')
+    if request.user.is_authenticated:
+        student = request.user.student
+        order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+        items = order.orderitem_set.all()
+
+    else:
+        items = []
+        order = {'get_cart_total':0}
+    context = {'items':items, 'order':order}
+    return render(request, 'courses/checkout.html', context)
 
 def courseGrid(request):
     libcourse = LibCourse.objects.all()
@@ -122,3 +130,15 @@ def tuLuyen(request):
 def infoHocPhi(request):
     context = {}
     return render(request, 'accounts/infoHocPhi.html')
+
+def updateItem(request):
+    data = json.loads(request.data)
+    courseId = data['courseId']
+    action = data['action']
+
+    print('Action:', action)
+    print('courseId:', courseId)
+    return JsonResponse('Item was added.', safe=False)
+def contact(request):
+    context = {}
+    return render(request, 'accounts/contact.html')
