@@ -152,8 +152,17 @@ def contact(request):
     context = {}
     return render(request, 'accounts/contact.html')
 
-def detailTeacher(request):
-    teachers = Teacher.objects.all()
+def detailTeacher(request, id):
+    teachers = Teacher.objects.get(id=id)
     context = {'teachers': teachers}
     
     return render(request, 'courses/detailTeacher.html',context)
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        courses = Courses.objects.filter(nameCourse__contains= searched)
+
+        return render(request, 'accounts/search.html', {'searched':searched}, {'courses':courses} )
+    else:
+        return render(request, 'accounts/search.html',{})
