@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.views import View
+from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from .models import *
+from .cart import Cart
 from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
@@ -163,3 +164,10 @@ def detailTeacher(request, id):
     
     return render(request, 'courses/detailTeacher.html',context)
 
+@require_POST
+def cartRemove(request, id):
+    cart = Cart(request)
+    courses = get_object_or_404(Courses, id=id)
+    cart.remove(courses)
+
+    return render()

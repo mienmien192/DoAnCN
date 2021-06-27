@@ -19,6 +19,7 @@
                 <div style="flex:2"><h4><strong>Item</strong></h4></div>
                 <div style="flex:1"><h4><strong>Giá</strong></h4></div>
                 <div style="flex:1"><h4><strong>Tổng</strong></h4></div>
+                <div style="flex:1"></div>
             </div>
 
             {% for item in items %}
@@ -28,7 +29,7 @@
                 <div style="flex:1"><strong>{{item.courses.price|floatformat:3}} VND</strong></div>
 
                 <div style="flex:1"><strong>{{item.get_total|floatformat:3}} VND</strong></div>
-
+                <div style="flex:1"><strong>X</strong></div>
             </div>
             {% endfor %}
         </div>
