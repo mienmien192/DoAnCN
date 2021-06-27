@@ -27,8 +27,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="{% url 'search' %}" method="POST">
-                                    {% csrf_token %}
+                            <form >
+
                                 <input type="search" class="form-control" placeholder="Tìm kiếm khóa học" name="searched">
                                 <button type="submit" class="site-btn" style="background: #7d5fff; "><i class="fa fa-search"></i></button>
                             </form>

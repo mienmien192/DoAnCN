@@ -35,7 +35,7 @@ urlpatterns = [
     path('update_item/', views.updateItem, name="update_item"),
     path('contact/', views.contact, name="contact"),
     path('detailTeacher/<int:id>', views.detailTeacher, name="detailTeacher"),
-    path('search/', views.search, name="search"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

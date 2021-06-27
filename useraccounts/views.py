@@ -27,8 +27,13 @@ def register(request):
 
 
 def home(request):
-    teachers = Teacher.objects.all()
-    courses = Courses.objects.all()
+    if 'searched' in request.GET:
+        searched = request.GET['searched']
+        courses = Courses.objects.filter(nameCourse__icontains=searched)
+        teachers = Teacher.objects.filter(fullname__icontains=searched)
+    else:
+        courses = Courses.objects.all()
+        teachers = Teacher.objects.all()
     context = {'teachers': teachers, 'courses': courses}
     return render(request, 'accounts/base.html', context)
 
@@ -158,11 +163,3 @@ def detailTeacher(request, id):
     
     return render(request, 'courses/detailTeacher.html',context)
 
-def search(request):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        courses = Courses.objects.filter(nameCourse__contains= searched)
-
-        return render(request, 'accounts/search.html', {'searched':searched}, {'courses':courses} )
-    else:
-        return render(request, 'accounts/search.html',{})
