@@ -35,7 +35,8 @@ class Courses(models.Model):
         upload_to='courseFile',
         max_length=254, blank=True, null=True
     )
-
+    detail = models.TextField(default='')
+    benefit = models.TextField(default='')
     def __str__(self):
         return self.nameCourse
 class OrderCourse(models.Model):

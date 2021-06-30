@@ -8,7 +8,10 @@ from .cart import Cart
 from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
+
+
 User = settings.AUTH_USER_MODEL
 
 def register(request):
@@ -127,8 +130,16 @@ def checkout(request):
 
 def courseGrid(request):
     libcourse = LibCourse.objects.all()
-    context = {}
-    return render(request, 'courses/coursesGrid.html',{'libcourse':libcourse})
+
+    paginator = Paginator(libcourse, 4)
+    pageNumber = request.GET.get('page')
+    try:
+        nameLCourse = paginator.page(pageNumber)
+    except PageNotAnInteger:
+        nameLCourse = paginator.page(1)
+    except EmptyPage:
+        nameLCourse = paginator.page(paginator.num_pages)
+    return render(request, 'courses/coursesGrid.html',{'libcourse':libcourse, 'nameLCourse':nameLCourse})
 def tuLuyen(request):
     context = {}
     return render(request, 'exam/tuluyen.html')
@@ -171,3 +182,11 @@ def cartRemove(request, id):
     cart.remove(courses)
 
     return render()
+
+
+def detailCourse(request, id):
+    courses = Courses.objects.get(id=id)
+    context = {'courses': courses}
+
+    return render(request, 'courses/detailCourse.html', context)
+

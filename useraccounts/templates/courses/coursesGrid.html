@@ -38,6 +38,24 @@
                 </div>
                 {% endfor %}
             </div>
+             <div class="pagination" style="float: right">
+                <span class="step-links">
+                    {% if nameLCourse.has_previous %}
+                        <a style="color: #000; text-decoration:none; font-weight: bold"  href="?page={{ nameLCourse.previous_page_number }}  ">Previous  </a>
+                    {% endif %}
+                </span>
+                <span class="current">
+                    Page {{ nameLCourse.number }} of {{ nameLCourse.paginator.num_pages }}
+                </span>
+                 <span>
+                    {% if nameLCourse.has_next %}
+                        <a style="color: #000; text-decoration:none; font-weight: bold" href="?page={{ nameLCourse.next_page_number }}  ">  Next</a>
+                    {% endif %}
+                </span>
+             </div>
         </div>
+
+
     </section>
+
 {% endblock %}
