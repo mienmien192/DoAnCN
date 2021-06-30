@@ -1,1 +1,2 @@
-Project: Website about EdTech
+Project: Website about EdTech 
+Create by: Ha,Chien,Duc,Hao.
