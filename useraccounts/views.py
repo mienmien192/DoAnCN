@@ -9,10 +9,52 @@ from .forms import CreateUserForm, StudentForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
 import json
+from tkinter import messagebox as tkMessageBox
+
+ 
+# app = Flask(__name__)
+
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT']=465
+# app.config['MAIL_USERNAME']="projectfood21@gmail.com"
+# app.config['MAIL_PASSWORD']="tranminhchien"
+# app.config['MAIL_USER_TLS']=False
+# app.config['MAIL_USER_SSL']=True
+
+# mail=Mail(app)
 
 
-User = settings.AUTH_USER_MODEL
+# User = settings.AUTH_USER_MODEL
+
+
+def contact(request):
+    if request.method=="POST":
+        msg = request.POST.get('message')
+        subject = request.POST.get('subject')
+        email = request.POST.get('email')
+        name=request.POST.get('name')
+        data={
+                'name':name,
+                'email':email,
+                'subject':subject,
+                'message':msg  
+        }
+        message='''
+        Username :{}
+        New message:{}
+        From :{}
+        '''.format(data['name'],data['message'],data['email'])
+        send_mail(data['subject'],message,'',['projectdoan21@gmail.com']) 
+        tkMessageBox.showinfo(title="Thông báo", message="Yêu cầu của bạn đã được gửi đi")
+        # Thay doi gmail admin 
+        
+        
+
+      
+    return render(request,"accounts/email.html",{})
+
 
 def register(request):
     form = CreateUserForm()
@@ -165,9 +207,7 @@ def updateItem(request):
     orderItem.save()
 
     return JsonResponse('Item was added.', safe=False)
-def contact(request):
-    context = {}
-    return render(request, 'accounts/contact.html')
+
 
 def detailTeacher(request, id):
     teachers = Teacher.objects.get(id=id)
