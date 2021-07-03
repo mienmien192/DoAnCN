@@ -595,7 +595,7 @@ ol {
     position: absolute;
     right: 18px;
     top: 9px;
-    content: "3";
+    content: "+";
     font-family: "ElegantIcons";
     font-size: 18px;
     color: #ffffff;
@@ -705,6 +705,7 @@ ol {
     color: #1c1c1c;
     font-weight: 700;
     margin-bottom: 5px;
+    margin-top: 2px;
 }
 
 .hero__search__phone__text span {
