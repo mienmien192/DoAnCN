@@ -5,12 +5,14 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from .cart import Cart
-from .forms import CreateUserForm, StudentForm
+from .forms import CreateUserForm, StudentForm, CommentForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 import json
+
 from tkinter import messagebox as tkMessageBox
 
  
@@ -225,8 +227,18 @@ def cartRemove(request, id):
 
 
 def detailCourse(request, id):
+
     courses = Courses.objects.get(id=id)
-    context = {'courses': courses}
+    videos = Video.objects.all()
+    context = {'courses': courses, 'videos': videos}
 
     return render(request, 'courses/detailCourse.html', context)
+
+def detailVideo(request, id):
+    videos = Video.objects.filter(id=id)
+    context = {
+        'video': videos,
+    }
+    return render(request, 'courses/detailVideo.html', context)
+
 

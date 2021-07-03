@@ -13,3 +13,11 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+class CommentForm(forms.Form):
+    comment = forms.CharField(widget=forms.Textarea(
+
+        attrs={
+            "class": "form-control",
+            "placeholder": "Leave a Comment!"
+        }))

@@ -1,0 +1,37 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content%}
+
+{% include 'accounts/sectionhero1.html' %}
+
+<div class="container">
+    <div class="row">
+        {% for video in video %}
+        <div class="col-md-12">
+
+
+                <center>
+                    <h1>{{video.courses}}</h1>
+                    <video width="100%" height="500" controls >
+                    <source src="{{video.video.url}}" type="video/mp4">
+
+                        </video>
+                </center>
+
+        </div>
+        <div class="col-md-6">
+            <br><br>
+            <h2>Thông tin khóa học</h2>
+            <p>Người đăng: {{video.uploader}}</p>
+            <p>Ngày đăng: {{video.date_posted}}</p>
+            <p>Lợi ích khi học khóa học: <br> {{video.description}}</p>
+        </div>
+        <div class="col-md-6">
+            <img src="{{video.thumbnail.url}}" alt="" style="width:100%; height: 500px ">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

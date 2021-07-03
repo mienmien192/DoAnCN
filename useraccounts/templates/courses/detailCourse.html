@@ -7,7 +7,7 @@
     <title> Detail Course </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
           type="text/css" >
-    <link rel="stylesheet" href="style.css">
+
     <style type="text/css">
         i{
             color:orange;
@@ -85,19 +85,33 @@
     </div>
 </section>
 
-<section id="position">
     <div class="container">
+         <div class="section-title">
+             <h2>Video bài giảng</h2>
+         </div>
+
         <div class="row">
+            {% for video in videos %}
+            <div class="col-md-3">
 
+
+
+                 {% if video.thumbnail %}
+
+                <a href="{% url 'detailVideo' video.id %}">
+                    <img src="{{video.thumbnail.url}}" alt="" style="width:300px; height: 300px "></a>
+                <center> <strong>{{video.title}}</strong></center>
+                <center> {{video.uploader}}</center>
+            {% endif %}
+
+
+            </div>{% endfor %}
         </div>
-    </div>
-</section>
-
-<secsion id="content">
-    <div class ="container">
 
     </div>
-</secsion>
+
+
+
 
 
 {% endblock content%}

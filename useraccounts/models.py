@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
+from django.utils import timezone
 
 class Student(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
@@ -97,3 +99,32 @@ class LibCourse(models.Model):
         upload_to='courseFile',
         max_length=254, blank=True, null=True
     )
+
+class Video(models.Model):
+    courses = models.ForeignKey(Courses, on_delete=models.SET_NULL, blank=True, null=True)
+    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    video = models.FileField(default= "", upload_to='video_files',
+                                  validators=[FileExtensionValidator(allowed_extensions=['mp4'])])
+    thumbnail = models.FileField(default= "", upload_to='thumbnails', validators=[
+                                 FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
+    date_posted = models.DateTimeField(default=timezone.now)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
+
+    class Meta:
+        verbose_name = 'video'
+        verbose_name_plural = 'videos'
+
+    def __str__(self):
+        return self.title
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    video = models.ForeignKey('Video', on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'User: {self.user} | Created On: {self.created_on.strftime("%b %d %Y %I:%M %p")}'
