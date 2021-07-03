@@ -18,6 +18,6 @@ class CommentForm(forms.Form):
     comment = forms.CharField(widget=forms.Textarea(
 
         attrs={
-            "class": "form-control",
+            "class": "form-group",
             "placeholder": "Leave a Comment!"
         }))

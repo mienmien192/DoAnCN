@@ -13,7 +13,7 @@ class Student(models.Model):
     date_create = models.DateTimeField(auto_now_add=True, null=True)
     date_update = models.DateTimeField(auto_now_add=True, null=True)
     avatar = models.ImageField(default='profile1.png',upload_to='studentfile',max_length=254, blank=True, null=True)
-    comment = models.TextField(default='')
+
 
     def __str__(self):
         return self.fullname
@@ -122,7 +122,7 @@ class Video(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    video = models.ForeignKey('Video', on_delete=models.CASCADE)
+    video = models.ForeignKey(Video, related_name="comments", on_delete=models.CASCADE)
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 

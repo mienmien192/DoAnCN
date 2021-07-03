@@ -1,6 +1,11 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
-
+<style>
+    .profile-pic{
+        border : 2px solid #000;
+        border-radius: 50%;
+    }
+</style>
 {% block content%}
 
 {% include 'accounts/sectionhero1.html' %}
@@ -23,12 +28,46 @@
         <div class="col-md-6">
             <br><br>
             <h2>Thông tin khóa học</h2>
-            <p>Người đăng: {{video.uploader}}</p>
+            <p>Người đăng:  <strong>{{video.uploader}}</strong></p>
             <p>Ngày đăng: {{video.date_posted}}</p>
             <p>Lợi ích khi học khóa học: <br> {{video.description}}</p>
+
         </div>
+
         <div class="col-md-6">
-            <img src="{{video.thumbnail.url}}" alt="" style="width:100%; height: 500px ">
+            <img src="{{video.thumbnail.url}}" alt="" style="width:100%; height: 400px ">
+             <hr>
+            <h2>Previous Comments</h2>
+            <br>
+            {% if not video.comments.all %}
+                No comments yet...
+            {% else %}
+
+                    {% for comment in video.comments.all %}
+            <strong>
+                <a href="" style="text-decoration:none; ">
+                    <img width="28" height="28" src="{{request.user.student.avatar.url}}" class="profile-pic" alt="">
+                    {{ comment.user }}</a> -
+                {{ comment.created_on }}
+            </strong>
+            <br>
+            {{ comment.comment }}
+              <br>
+                {% endfor %}
+
+            {% endif %}
+            <br><br>
+            <form  method="POST">
+
+                   {% csrf_token %}
+                    <div class="form-group" >
+                        {{comment_form.as_p}}
+                    </div>
+            <button style="width:100px; height:50px;" type="submit" class="btn btn-warning">
+                <i class="fas fa-paper-plane"></i></button>
+            </form>
+
+
         </div>
     </div>
     {% endfor %}

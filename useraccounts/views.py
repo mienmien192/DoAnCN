@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 import json
+from django.urls import reverse
 
 from tkinter import messagebox as tkMessageBox
 
@@ -221,6 +222,7 @@ def detailTeacher(request, id):
 def cartRemove(request, id):
     cart = Cart(request)
     courses = get_object_or_404(Courses, id=id)
+
     cart.remove(courses)
 
     return render()
@@ -235,10 +237,26 @@ def detailCourse(request, id):
     return render(request, 'courses/detailCourse.html', context)
 
 def detailVideo(request, id):
-    videos = Video.objects.filter(id=id)
-    context = {
-        'video': videos,
-    }
-    return render(request, 'courses/detailVideo.html', context)
+    videos = Video.objects.filter(id = id)
+    post = get_object_or_404(Video, id= id)
+    comments = Comment.objects.filter(video=videos).order_by('-id')
 
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        if comment_form.is_valid():
+            comment = request.POST.get('comment')
+            cmt = Comment.objects.create(post = post, user=request.user, comment=comment)
+            cmt.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+    else:
+        comment_form = CommentForm()
+
+    context = {
+        'post':post,
+        'video': videos,
+        'comments':comments,
+        'comment_form':comment_form,
+    }
+
+    return render(request, 'courses/detailVideo.html', context)
 
