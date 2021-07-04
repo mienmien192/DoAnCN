@@ -83,8 +83,19 @@ def home(request):
     else:
         courses = Courses.objects.all()
         teachers = Teacher.objects.all()
-    context = {'teachers': teachers, 'courses': courses}
+        category= Category.objects.all()
+    context = {'teachers': teachers, 'courses': courses,'category': category}
     return render(request, 'accounts/base.html', context)
+
+def category(request,id):
+    courses = Courses.objects.filter(category=id)  
+    context = {'courses': courses}
+    return render(request, 'accounts/category.html', context)
+    
+def getcategory(request):
+    category = Category.objects.all()
+    context = {'category': category}
+    return render(request, 'accounts/sectionhero.html', context)
 
 
 def dashboard(request):

@@ -1,0 +1,41 @@
+{% load static %}
+{% block content%}
+
+ <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Thể loại sản phẩm </h2>
+
+                    </div>
+                   
+                </div>
+            </div>
+        <div class="row featured__filter">
+            {% for courses in courses %}
+            <div class="col-lg-3 col-md-4 col-sm-6" >
+                    <div class="featured__item" >
+                        <div class="featured__item__pic set-bg"style="border-radius: 20px"  >
+                            {% if courses.courseImg %}
+                            <img src="{{courses.courseImg.url}}" alt="" style="width:300px; height: 320px ">
+                                
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="{% url 'detailCourse' courses.id %}"><i class="fa fa-retweet"></i></a></li>
+                                <li><button data-courses="{{courses.id}}" data-action ="add" class="btn btn-warning update-cart"><i class="fa fa-shopping-cart"></i></button></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text" >
+                            <h6><a href="#" style="text-decoration: none;font-size:20px"><strong>{{courses.nameCourse}}</strong></a></h6>
+                            <h6><a href="#" style="text-decoration: none; font-size:18px">{{courses.description}}</a></h6>
+                            <h5 class="gia">{{courses.price|floatformat:3}} VNĐ</h5>
+                        </div>
+                    </div>
+                {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
