@@ -37,7 +37,9 @@ urlpatterns = [
     path('detailTeacher/<int:id>', views.detailTeacher, name="detailTeacher"),
     path('detailCourse/<int:id>', views.detailCourse, name="detailCourse"),
     path('detailVideo/<int:id>', views.detailVideo, name ="detailVideo"),
-
+    path('take-exam/<int:pk>', views.take_exam_view,name='take-exam'),
+    path('start-exam/<int:pk>', views.start_exam_view,name='start-exam'),
+    path('calculate-marks', views.calculate_marks_view,name='calculate-marks'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

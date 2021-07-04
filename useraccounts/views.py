@@ -185,9 +185,6 @@ def courseGrid(request):
     except EmptyPage:
         nameLCourse = paginator.page(paginator.num_pages)
     return render(request, 'courses/coursesGrid.html',{'libcourse':libcourse, 'nameLCourse':nameLCourse})
-def tuLuyen(request):
-    context = {}
-    return render(request, 'exam/tuluyen.html')
 
 def infoHocPhi(request):
     context = {}
@@ -259,4 +256,53 @@ def detailVideo(request, id):
     }
 
     return render(request, 'courses/detailVideo.html', context)
+# student_exam_view
+def tuLuyen(request):
+    exam = Exam.objects.all()
+    context = {'exam':exam}
+    return render(request, 'exam/tuluyen.html', context)
+
+def take_exam_view(request,pk):
+    exam = Exam.objects.get(id=pk)
+    total_questions=Question.objects.all().filter(exam=exam).count()
+    questions= Question.objects.all().filter(exam=exam)
+    total_marks=0
+    for q in questions:
+        total_marks=total_marks + q.marks
+    return render(request, 'exam/take_exam.html',
+                  {'exam': exam, 'total_questions': total_questions, 'total_marks': total_marks})
+
+def start_exam_view(request,pk):
+    exam = Exam.objects.get(id=pk)
+    questions=Question.objects.all().filter(exam=exam)
+    if request.method=='POST':
+        pass
+    response= render(request,'exam/start_exam.html',{'exam':exam,'questions':questions})
+    response.set_cookie('exam_id',exam.id)
+    return response
+
+
+def calculate_marks_view(request):
+    if request.COOKIES.get('exam_id') is not None:
+        exam_id = request.COOKIES.get('exam_id')
+        exam = Exam.objects.get(id=exam_id)
+
+        total_marks = 0
+        questions = Question.objects.all().filter(exam=exam)
+        for i in range(len(questions)):
+
+            selected_ans = request.COOKIES.get(str(i + 1))
+            actual_answer = questions[i].answer
+            if selected_ans == actual_answer:
+                total_marks = total_marks + questions[i].marks
+
+        result = Result()
+        result.marks = total_marks
+        result.exam = exam
+
+        result.save()
+
+        return HttpResponseRedirect('view-result')
+
+
 

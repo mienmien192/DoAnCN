@@ -128,3 +128,31 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'User: {self.user} | Created On: {self.created_on.strftime("%b %d %Y %I:%M %p")}'
+
+class Exam(models.Model):
+    exam_name = models.CharField(max_length=50)
+    question_number = models.PositiveIntegerField()
+    total_marks = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.exam_name
+
+class Question(models.Model):
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE, default="")
+    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
+    marks = models.PositiveIntegerField()
+    question = models.CharField(max_length=600)
+    option1 = models.CharField(max_length=200)
+    option2 = models.CharField(max_length=200)
+    option3 = models.CharField(max_length=200)
+    option4 = models.CharField(max_length=200)
+    cate = (('Option1', 'Option1'), ('Option2', 'Option2'), ('Option3', 'Option3'), ('Option4', 'Option4'))
+    answer = models.CharField(max_length=200, choices=cate)
+
+class Result(models.Model):
+    student = models.ForeignKey(Student,on_delete=models.CASCADE)
+    exam = models.ForeignKey(Exam,on_delete=models.CASCADE, default="")
+    marks = models.PositiveIntegerField()
+    date = models.DateTimeField(auto_now=True)
+
+

@@ -1,0 +1,52 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% include 'accounts/sectionhero1.html' %}
+{% block content %}
+<div class="container my-4">
+    <div class="jumbotron">
+
+	      <h3 class="text-info text-center">Trước khi bắt đầu exam, đây là những điều cần nắm</h3>
+
+        <div class="row">
+
+            <div class="card border-info mx-4 my-4">
+                <div class="card-body text-info">
+
+                    <h4 class="card-title">Chi tiết kỳ thi :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Tên bài thi : {{exam.exam_name}}</li>
+                            <li>Tổng câu hỏi : {{total_questions}}</li>
+                            <li>Tổng điểm : {{total_marks}}</li>
+                        </ul>
+                    <p></p>
+
+
+
+                    <h4 class="card-title">Rules :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Tất cả các câu hỏi đều là câu hỏi trắc nghiệm.</li>
+                            <li><span class="text-danger">Chỉ có một lựa chọn là đúng.</span></li>
+                            <li>Mỗi câu hỏi có độ khó khác nhau
+                            </li>
+
+                            <li>Cố gắng trả lời càng nhanh càng tốt.</li>
+                            <li>Nếu bạn nhấn làm mới hoặc quay lại trang trước,
+                                sẽ có một câu hỏi mới dành cho bạn và câu hỏi bạn đang xem sẽ được tính là đã thử.</li>
+                            <li>Các câu hỏi được hiển thị ngẫu nhiên cho mọi người dùng.</li>
+                            <li>Bạn sẽ được cho biết điểm của mình ngay lập tức khi bạn gửi câu trả lời.</li>
+                        </ul>
+                    <p></p>
+                    <a href="{% url 'start-exam' exam.id  %}" class="btn btn-info">Let's Start</a>
+                </div>
+                <div class="card-footer">Cố lên</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+
+{% endblock %}
