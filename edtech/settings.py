@@ -130,6 +130,8 @@ STATICFILES_DIRS = (
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
+ALLOWED_HOSTS = ['localhost:8000', 'edtechteam21.herokuapp.com']
+
 MEDIA_URL = '/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 
