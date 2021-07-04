@@ -80,11 +80,12 @@ def home(request):
         searched = request.GET['searched']
         courses = Courses.objects.filter(nameCourse__icontains=searched)
         teachers = Teacher.objects.filter(fullname__icontains=searched)
+        category = Category.objects.filter(namecategory__icontains=searched)
     else:
         courses = Courses.objects.all()
         teachers = Teacher.objects.all()
-        category= Category.objects.all()
-    context = {'teachers': teachers, 'courses': courses,'category': category}
+        category = Category.objects.all()
+    context = {'teachers': teachers, 'courses': courses, 'category': category}
     return render(request, 'accounts/base.html', context)
 
 def category(request,id):
@@ -306,14 +307,20 @@ def calculate_marks_view(request):
             actual_answer = questions[i].answer
             if selected_ans == actual_answer:
                 total_marks = total_marks + questions[i].marks
-
+        student = models.User.objects.get(user_id=request.user.id)
         result = Result()
         result.marks = total_marks
         result.exam = exam
-
+        result.student = student
         result.save()
 
         return HttpResponseRedirect('view-result')
+
+def view_result_view(request):
+    exam = Exam.objects.all()
+    return render(request,'exam/view_result.html',{'exam':exam})
+
+
 
 
 

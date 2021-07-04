@@ -1,15 +1,21 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
-{% include 'accounts/sectionhero1.html' %}
-{% block content %}
 
+{% block content %}
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
 <div class="jumbotron my-4">
 
-  <form class="form" autocomplete="off" onsubmit="return saveAns()"  action="/student/calculate-marks" method="POST">
+  <form class="form" autocomplete="off" onsubmit="return saveAns()" action="/calculate-marks" method="POST">
     {% csrf_token %}
     <h1 style="text-align: center;">{{exam.exam_name}}</h1>
     {% for q in questions%}
-    <h3 class="text-info">{{ forloop.counter }}. {{q.question}}</h3><h4 style="text-align: right;">[Marks {{q.marks}}]</h4>
+    <h3 class="text-info">{{ forloop.counter }}. {{q.question}}</h3><h4 style="text-align: right;">[Điểm {{q.marks}}]</h4>
 
         <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
 
@@ -46,7 +52,7 @@
           </div>
 
         {% endfor %}
-        <input class="btn btn-info btn-lg" type="submit" value="Submit">
+        <center><input class="btn btn-info btn-lg" type="submit" value="Nộp bài"></center>
     </form>
   </div>
 
