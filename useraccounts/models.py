@@ -159,5 +159,11 @@ class Result(models.Model):
     exam = models.ForeignKey(Exam,on_delete=models.CASCADE, default="")
     marks = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now=True)
+class Order(models.Model):
+    courses = models.ForeignKey(Courses, on_delete=models.SET_NULL, blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.courses.nameCourse
 
 

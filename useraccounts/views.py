@@ -58,7 +58,8 @@ def contact(request):
       
     return render(request,"accounts/email.html",{})
 
-
+def paypal(request):
+    return render(request,'courses/paypal.html')
 def register(request):
     form = CreateUserForm()
 
@@ -319,7 +320,18 @@ def calculate_marks_view(request):
 def view_result_view(request):
     exam = Exam.objects.all()
     return render(request,'exam/view_result.html',{'exam':exam})
+def paymentComplete(request):
+    body=json.loads(request.body)
+    
+    print('body:',body)
+    
+    courses=Courses.objects.filter(id=body['coursesId'])
 
+    for courses in courses:
+        Order.objects.create(
+        courses=courses
+        )
+    return JsonResponse('Thanh toan thanh cong ',safe=False)
 
 
 
