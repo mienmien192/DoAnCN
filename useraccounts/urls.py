@@ -44,6 +44,7 @@ urlpatterns = [
     path('category/<int:id>', views.category, name ="category"),
     path('paypal/', views.paypal, name="paypal"),
     path('complete/', views.paymentComplete, name="complete"),
+    path('delete/<int:id>', views.delete, name ="delete"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

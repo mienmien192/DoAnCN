@@ -333,6 +333,13 @@ def paymentComplete(request):
         )
     return JsonResponse('Thanh toan thanh cong ',safe=False)
 
-
+def delete(request, id):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            student = request.user.student
+            order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+            items = order.orderitem_set.get(pk=id)
+            items.delete()
+    return HttpResponseRedirect(reverse('cart'))
 
 
