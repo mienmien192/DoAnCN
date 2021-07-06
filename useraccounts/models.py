@@ -25,14 +25,14 @@ class Category(models.Model):
 
 class Courses(models.Model):
     CATEGORY = (
-        ('1', 'DH-CD'),
-        ('2', 'Bo tro'),
-        ('3', 'luyen thi DH'),
-        ('4', 'Boi duong HSG'),
-        ('6', 'Lop6-9'),
-        ('7', 'Luyen thi vao 6'),
-        ('8', 'Lop1-5'),
-        ('9', 'Hoc nghe')
+        ('1', 'Đại Học - Cao Đẳng'),
+        ('2', 'Bổ Trợ'),
+        ('3', 'Luyện thi đại học'),
+        ('4', 'Bồi dưỡng học sinh giỏi'),
+        ('6', 'Từ lớp 6 đến lớp 9'),
+        ('7', 'Luyện thi vào lớp 6'),
+        ('8', 'Từ lớp 5 đến lớp 9'),
+        ('9', 'Học nghe')
     )
     nameCourse = models.CharField(max_length=200, null=True)
     description = models.TextField(default='')
