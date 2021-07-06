@@ -3,7 +3,69 @@
 
 {% block content %}
 
-<div class="container">
+
+<section id="recent-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="related-products">
+
+
+
+                        <!-- Block heading two -->
+                        <div class="block-heading-two">
+                            <h3><span>Giảng viên tiêu biểu</span></h3>
+                        </div>
+
+                        <div class="related-products-wrapper">
+
+                            <div class="related-products-carousel">
+
+                                <div class="product-control-nav">
+                                    <a class="prev"><i class="fa fa-angle-left"></i></a>
+                                    <a class="next"><i class="fa fa-angle-right"></i></a>
+                                </div>
+
+
+                                <div class="row product-listing">
+                                    <div id="product-carousel" class="product-listing">
+                                         {% for teachers in teachers %}
+                                        <div class="product  item first ">
+
+                                            
+
+
+                                                <figure>
+                                                    {% if teachers.avatar %}
+                                                    <a href="{% url 'detailTeacher' teachers.id %}">
+                                                        <img style='border-radius: 50%;' src="{{teachers.avatar.url}}" class="img-responsive" alt="T_2_front">
+                                                    </a>
+                                                  
+                                                </figure>
+
+                                                <h4 class="title"><a href="#">{{teachers.fullname}}</a></h4>
+
+
+                                               
+                                           
+                                            {% endif %}
+                                        </div>
+                                        {% endfor %}
+
+                                      
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- <div class="container">
         <div class="teacher">
             <div class="section-title">
                         <h2>Giảng viên tiêu biểu</h2>
@@ -34,5 +96,8 @@
             </div>
         </div>
     </div>
+
+
+
 
 {% endblock %}
