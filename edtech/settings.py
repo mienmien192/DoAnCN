@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i@p3^22wd(p+ld)-^z^s4rsl#3c-#2dtn6g+%lwdbrsc@r8z0q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -130,7 +130,7 @@ STATICFILES_DIRS = (
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-ALLOWED_HOSTS = ['localhost:8000', 'edtechteam21.herokuapp.com']
+
 
 MEDIA_URL = '/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')

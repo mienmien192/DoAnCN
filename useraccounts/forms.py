@@ -4,6 +4,8 @@ from django.forms import ModelForm
 from .models import *
 from . import models
 
+
+
 class StudentForm(ModelForm):
     class Meta:
         model = Student
@@ -30,9 +32,22 @@ class QuestionForm(forms.ModelForm):
     examID = forms.ModelChoiceField(queryset=models.Exam.objects.all(), empty_label="Exam Name",
                                       to_field_name="id")
 
-    class Meta:
-        model = models.Question
-        fields = ['marks', 'question', 'option1', 'option2', 'option3', 'option4', 'answer']
-        widgets = {
-            'question': forms.Textarea(attrs={'rows': 3, 'cols': 50})
-        }
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = models.Question
+#         fields = ['marks', 'question', 'option1', 'option2', 'option3', 'option4', 'answer']
+#         widgets = {
+#             'question': forms.Textarea(attrs={'rows': 3, 'cols': 50})
+#         }
+#         class CommentForm(forms.ModelForm):
+#             def __init__(self, *args, **kwargs):
+#                 self.user = kwargs.pop('user',None)
+#                 super().__init__(*args, **kwargs)
+#             def save(self, commit=True):
+#                 comment = super().save(commit=False)
+#                 comment.user = self.user 
+
+#                 comment.save()
+#             class meta:
+#                 model = Comment
+#                 fields = ["comment"]

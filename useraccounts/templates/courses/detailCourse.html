@@ -9,7 +9,53 @@
           type="text/css" >
 
     <style type="text/css">
-        i{
+        #showcase .container .infor{
+            float: right;
+            
+        }
+        #showcase .container .infor .action {
+            padding: 20px;
+            text-align: center;
+        }
+        #showcase .container .infor .action h1 {
+            color: #e55039;
+            
+        }
+        #showcase .container .infor .action a{
+            text-decoration: none;
+            padding: 10px 30px;
+            border: 1px solid #eb4d4b;
+            border-radius: 10px;
+            background: #eb4d4b;
+            color: #fff;
+            font-size: 20px;
+        }
+        #showcase .container .infor .action a:hover{
+            background-color: #eb2f06;
+            transition: .75s;
+        }
+        #showcase .container .infor .contain ul {
+            list-style: none;
+            line-height: 30px;
+            
+            float: left;
+        }
+        #showcase .container .infor .contain ul li {
+            color: #494949
+        }
+        #showcase .container .infor .contain ul li i {
+            padding: 10px;
+        }
+        
+        
+        #showcase .container .infor img{
+            width: 300px;
+            height: 250px;
+            float: right;
+            padding: 20px;
+        }
+
+        #detail  i{
             color:orange;
             font-size:25px;
         }
@@ -22,6 +68,7 @@
             border-bottom:1px solid #618685;
             padding-bottom: 50px;
             background-size:100%;
+            height: 500px;
         }
         #showcase .row{
             height:300px;
@@ -36,26 +83,46 @@
             float: left;
             margin-left: -300px;
         }
-        #detail {
-        padding-bottom: 100px;
-        margin:20px;
-        margin-left:-300px;
-        }
+       
 
         #showcase .left{
         float: left;
         margin-top:-170px;
         margin-left:-100px;
+        width: 80%;
         }
         .primary-text {
             color:#484f4f;
+        }
+        #detail {
+        padding-bottom: 100px;
+        margin:20px;
+        margin-left:-300px;
+        text-align: center;
         }
     </style>
 
 </head>
 
+{% if courses %}
 <section id="showcase">
+    
     <div class="container">
+        <div class="infor">
+            <img src="{{courses.courseImg.url}}" alt="##">
+            <div class="action">
+                <h1>Miễn phí</h1>
+                <a href="#">Đăng kí học</a>
+            </div>
+            <div class="contain">
+                <ul class="list-contain"> 
+                    <li><i class="fa fa-graduation-cap"></i><span>Trình độ</span></li>
+                    <li><i class="fa fa-tags"></i><span>Tổng số bài học</span></li>
+                    <li><i class="fa fa-clock"></i><span>Thời lượng .....</span></li>
+                    <li><i class="fa fa-battery-4"></i><span>Học mọi lúc, mọi nơi</span></li>
+                </ul>
+            </div>
+        </div>
         <div class="row center-xs center-sm center md center-lg">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showcase-content ">
                 <h3><b>{{courses.nameCourse}} <span class="primary-text">{{courses.description}}</span></b></h3>
@@ -70,6 +137,7 @@
 
 <section id="detail">
     <div class="container">
+        
         <div class="row center-xs center-sm center md center-lg">
             <div class="col-xs-12 col-sm-4 col-md-4  ">
                 <i class="fas fa-trophy"></i><br>
@@ -79,11 +147,12 @@
             <div class="col-xs-12 col-sm-4  ">
                 <i class="fas fa-clipboard"></i><br>
                  <h4> Yêu cầu khi học khóa học </h4>
-                  <i class="fas fa-check"></i> <span> Y thuc tu hoc cao, trach nhiem cao, kien tri ben bi khong ngai cai kho </span>
+                  <i class="fas fa-check"></i> <span> {{courses.detail}}</span>
             </div>
         </div>
     </div>
 </section>
+{% endif %}
 
     <div class="container">
          <div class="section-title">
