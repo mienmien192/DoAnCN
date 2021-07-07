@@ -3,7 +3,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 from . import models
-
+from .models import Comment
 
 
 class StudentForm(ModelForm):
@@ -17,13 +17,21 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-class CommentForm(forms.Form):
-    comment = forms.CharField(widget=forms.Textarea(
+class CommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        self.video = kwargs.pop('video', None)
+        super().__init__( *args, **kwargs)
 
-        attrs={
-            "class": "form-group",
-            "placeholder": "Leave a Comment!"
-        }))
+    def save(self, commit=True):
+        cmt=super().save(commit=False)
+        cmt.user=self.user
+        cmt.video=self.video
+        cmt.save()
+    class Meta:
+        model = Comment
+        fields = ["comment"]
+
 
 
 class QuestionForm(forms.ModelForm):
@@ -31,23 +39,3 @@ class QuestionForm(forms.ModelForm):
     # to_field_name this will fetch corresponding value  user_id present in course model and return it
     examID = forms.ModelChoiceField(queryset=models.Exam.objects.all(), empty_label="Exam Name",
                                       to_field_name="id")
-
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = models.Question
-#         fields = ['marks', 'question', 'option1', 'option2', 'option3', 'option4', 'answer']
-#         widgets = {
-#             'question': forms.Textarea(attrs={'rows': 3, 'cols': 50})
-#         }
-#         class CommentForm(forms.ModelForm):
-#             def __init__(self, *args, **kwargs):
-#                 self.user = kwargs.pop('user',None)
-#                 super().__init__(*args, **kwargs)
-#             def save(self, commit=True):
-#                 comment = super().save(commit=False)
-#                 comment.user = self.user 
-
-#                 comment.save()
-#             class meta:
-#                 model = Comment
-#                 fields = ["comment"]

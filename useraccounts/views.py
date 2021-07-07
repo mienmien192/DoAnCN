@@ -90,8 +90,9 @@ def home(request):
     return render(request, 'accounts/base.html', context)
 
 def category(request,id):
+    libcourse = LibCourse.objects.filter(category=id)
     courses = Courses.objects.filter(category=id)  
-    context = {'courses': courses}
+    context = {'courses': courses, 'libcourse':libcourse}
     return render(request, 'accounts/category.html', context)
     
 def getcategory(request):
@@ -101,10 +102,10 @@ def getcategory(request):
 
 
 def dashboard(request):
-    courses = Courses.objects.all()
+    teacher = Teacher.objects.all()
     student = Student.objects.all()
 
-    context = {'courses': courses, 'student': student}
+    context = {'teacher': teacher, 'student': student}
     return render(request, 'accounts/dashboard.html', context)
 
 
@@ -141,7 +142,9 @@ def logoutUser(request):
 
 
 def profile(request):
-    return render(request, 'login/profile.html')
+    student = Student.objects.all()
+    context = {'student': student}
+    return render(request, 'login/profile.html',context)
 
 
 def accountSettings(request):
@@ -246,30 +249,24 @@ def detailCourse(request, id):
 
     return render(request, 'courses/detailCourse.html', context)
 
-def detailVideo(request, id):
-    videos = Video.objects.filter(id = id)
-    post = get_object_or_404(Video, id= id)
-    comments = Comment.objects.filter(video=videos).order_by('-id')
+def detailVideo( request, pk):
+    video = Video.objects.filter(pk = pk)
 
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST or None)
-        if comment_form.is_valid():
-            comment = request.POST.get('comment')
-            cmt = Comment.objects.create(post = post, user=request.user, comment=comment)
-            cmt.save()
-            return HttpResponseRedirect(post.get_absolute_url())
+    if request.method == "post":
+        form = CommentForm(request.post, user=request.user, video=video)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path)
     else:
-        comment_form = CommentForm()
-
+        form = CommentForm()
     context = {
-        'post':post,
-        'video': videos,
-        'comments':comments,
-        'comment_form':comment_form,
+        'video': video,
+        'form': form,
     }
 
     return render(request, 'courses/detailVideo.html', context)
 # student_exam_view
+
 def tuLuyen(request):
     exam = Exam.objects.all()
     context = {'exam':exam}

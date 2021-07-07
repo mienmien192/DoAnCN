@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <hr>
         <div class="card card-body">
-            <a class="btn btn-warning" href="">Create Student</a>
+            <a class="btn btn-warning" href=""><h4>Create Student</h4></a>
             <table class="table table-sm">
                 <tr>
                     <th>id</th>
@@ -33,27 +33,31 @@
     <div class="col-md-12">
         <hr>
         <div class="card card-body">
-            <a class="btn btn-warning" href="">Create Course</a>
+            <a class="btn btn-warning" href=""><h4>Create Teacher</h4></a>
             <table class="table table-sm">
                 <tr>
                    <th>id</th>
-                    <th>name of course</th>
-                     <th>description</th>
-                    <th>price</th>
-                    <th>Category</th>
-                    <th>Img</th>
+                    <th>name of teacher</th>
+                     <th>Account</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>subject</th>
+                    <th>facebook</th>
+                    <th>avatar</th>
                     <th>Update</th>
                     <th>Remove</th>
 
                 </tr>
-                {% for courses in courses %}
+                {% for teacher in teacher %}
                 <tr>
-                    <td>{{courses.id}}</td>
-                    <td>{{courses.nameCourse}}</td>
-                    <td>{{courses.description}}</td>
-                    <td>{{courses.price}}</td>
-                    <td>{{courses.category}}</td>
-                    <td>{{courses.courseImg}}</td>
+                    <td>{{teacher.id}}</td>
+                    <td>{{teacher.fullname}}</td>
+                    <td>{{teacher.account}}</td>
+                    <td>{{teacher.phone}}</td>
+                    <td>{{teacher.email}}</td>
+                    <td>{{teacher.subject}}</td>
+                    <td>{{teacher.facebook}}</td>
+                    <td>{{teacher.avatar}}</td>
                     <td><a href="#">Update</a></td>
                     <td><a href="#">Remove</a></td>
 

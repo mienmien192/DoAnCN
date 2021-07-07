@@ -9,11 +9,19 @@ admin.site.register(OrderCourse)
 admin.site.register(OrderItem)
 admin.site.register(Teacher)
 admin.site.register(LibCourse)
-admin.site.register(Video)
-admin.site.register(Comment)
+
+
 admin.site.register(Question)
 admin.site.register(Result)
 admin.site.register(Exam)
 admin.site.register(Category)
 
- 
+class CommentInLine(admin.TabularInline):
+    model = Comment
+    list_display = ['user', 'comment', 'created_on']
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'date_posted']
+    list_filter = ['date_posted']
+    search_fields = ['id']
+    inlines = [CommentInLine]
+admin.site.register(Video, VideoAdmin)

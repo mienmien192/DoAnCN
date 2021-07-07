@@ -126,7 +126,7 @@ class Video(models.Model):
         return self.title
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     video = models.ForeignKey(Video, related_name="comments", on_delete=models.CASCADE)
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

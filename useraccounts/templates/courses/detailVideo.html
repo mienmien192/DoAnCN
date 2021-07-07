@@ -51,21 +51,23 @@
                 {{ comment.created_on }}
             </strong>
             <br>
-            {{ comment.comment }}
+            {{ comment.comment|linebreaks }}
               <br>
-                {% endfor %}
-
-            {% endif %}
-            <br><br>
-            <form  method="POST">
+                    {% endfor %}
+                    {% if user.username %}
+                        <form action="{% url 'detailVideo' video.id %}" method="post">
 
                    {% csrf_token %}
-                    <div class="form-group" >
-                        {{comment_form.as_p}}
-                    </div>
-            <button style="width:100px; height:50px;" type="submit" class="btn btn-warning">
+                    <p><label>Bình luận</label></p>
+                            {{form.as_p}}
+                <br>
+                <button style="width:100px; height:50px;" type="submit" class="btn btn-warning">
                 <i class="fas fa-paper-plane"></i></button>
+
             </form>
+                {% endif %}
+            {% endif %}
+            <br><br>
 
 
         </div>

@@ -21,10 +21,13 @@
 
 
 </style>
-<header class="header" >
+
+<header class="header"  >
+
     <div class="header__top">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-6 col-md-4">
                     <div class="header__top__left">
 
@@ -48,7 +51,7 @@
                                      <p style="color: #000;font-size: 18px">Xin chào,
                                          <a href="{% url 'profile' %}" style="text-decoration: none; font-size: 18px">
                                          <strong>{{ user.username }}</strong></a>
-                                         <a href="{% url 'logout' %}" class="logOut" style="text-decoration: none; font-size: 18px">LOGOUT</a></p>
+                                         <a href="{% url 'logout' %}" class="logOut" style="text-decoration: none; font-size: 18px"><i class="fas fa-sign-out-alt"></i></a></p>
 
                                 {% else %}
                                     <p><a class="logIn" href="{% url 'login' %}">SIGN IN</a> <a class="signUp" href="{% url 'register' %}">SIGN UP</a></p>
@@ -60,6 +63,7 @@
             </div>
         </div>
     </div>
+    <img src="{% static 'img/881.png'%}" alt="">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
