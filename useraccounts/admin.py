@@ -15,4 +15,8 @@ admin.site.register(Question)
 admin.site.register(Result)
 admin.site.register(Exam)
 admin.site.register(Category)
+<<<<<<< HEAD
  
+=======
+admin.site.register(Order)
+>>>>>>> dd1225dd4fe398852d42fc059ce81a53ca3d5d44

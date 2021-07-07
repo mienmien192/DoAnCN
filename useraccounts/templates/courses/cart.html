@@ -29,7 +29,11 @@
                 <div style="flex:1"><strong>{{item.courses.price|floatformat:3}} VND</strong></div>
 
                 <div style="flex:1"><strong>{{item.get_total|floatformat:3}} VND</strong></div>
-                <div style="flex:1"><strong>X</strong></div>
+                <div style="flex:1">
+                    <form action="{% url 'delete' item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" style="background: transparent; border: none; color: #7d5fff"><i class="fas fa-trash-alt"></i></button>
+                    </form></div>
             </div>
             {% endfor %}
         </div>

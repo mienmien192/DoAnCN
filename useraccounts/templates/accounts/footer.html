@@ -1,3 +1,4 @@
+
    <footer class="footer spad">
         <div class="container">
             <div class="row" >
@@ -15,9 +16,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Về chúng tôi</h6>
-                        <ul>
+                    <div class="footer__widget" style="padding-top: 2px;">
+                        <h6 style="padding-left: 25px;">Về chúng tôi</h6>
+                        <ul >
                             <li><a href="#">Giới thiệu</a></li>
                             <li><a href="#">Học sinh tiêu biểu</a></li>
                             <li><a href="#">Luyện thi</a></li>
@@ -25,6 +26,7 @@
                             <li><a href="#">Quy chế hoạt động</a></li>
                             <li><a href="#">Tuyển dụng</a></li>
                         </ul>
+
 
                         <ul>
                             <li><a href="#">Diễn đàn học tập</a></li>
@@ -37,9 +39,16 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12" >
-                    <div class="footer__widget">
+                    <div class="footer__widget "id='contact'>
                         <h6>Liên hệ chúng tôi</h6>
-
+                       
+                          <p href="#">Thời gian dạy học trực tiếp </p>
+                          <p href="#">Thứ 2 - Thứ 6 : <span>8.30 a.m - 5.30 p.m</span></p>
+                          <p href="#">Thứ 7 : 9.00 a.m - 2.00 p.m</p>
+                          <p href="#">Chủ Nhật : Đóng</p>
+                      
+                           
+                            <br>
                         <div class="footer__widget__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
@@ -59,3 +68,37 @@
             </div>
         </div>
     </footer>
+    <button
+        type="button"
+        class="btn btn-danger btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+  <i class="fas fa-arrow-up"></i>
+</button>
+    <script>
+       //Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>

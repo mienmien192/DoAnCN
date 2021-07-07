@@ -42,6 +42,9 @@ urlpatterns = [
     path('calculate-marks', views.calculate_marks_view,name='calculate-marks'),
     path('view-result', views.view_result_view,name='view-result'),
     path('category/<int:id>', views.category, name ="category"),
+    path('paypal/', views.paypal, name="paypal"),
+    path('complete/', views.paymentComplete, name="complete"),
+    path('delete/<int:id>', views.delete, name ="delete"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
