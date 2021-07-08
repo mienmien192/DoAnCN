@@ -1,200 +1,188 @@
-.container-hocphi{
-    background:#fff;
+.container-hocphi {
+  background: #fff;
 }
 
-.container-hocphi .intro{
-margin: 0 auto;
-background-color: #cd84f1;
-width: 50%;
-height: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-clip-path: polygon(100% 20%, 95% 50%, 100% 80%, 0 80%, 5% 50%, 0 20%);
+.container-hocphi .intro {
+  margin: 0 auto;
+  background-color: #cd84f1;
+  width: 50%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  clip-path: polygon(100% 20%, 95% 50%, 100% 80%, 0 80%, 5% 50%, 0 20%);
 }
-.container-hocphi .intro h1{
-font-size: 60px;
-margin-top: 0px;
-}
-
-.container-hocphi .allstep{
-display: block;
-margin: 50px auto 0 auto;
-text-align: center;
-}
-.container-hocphi .allstep .step-inner{
-display: inline-block;
-}
-.container-hocphi .allstep .item{
-text-align: center;
-float: left;
-cursor: pointer;
-}
-.container-hocphi .allstep .item a{
-text-decoration: none;
-font-size: 20px;
-padding: 10px;
-}
-.container-hocphi .allstep .item  p{
-margin-top: 20px;
-font-weight: bold;
-}
-.container-hocphi .allstep .item  a:hover{
-color: midnightblue;
-}
-.container-hocphi .allstep .item .inner{
-border-right: 1px solid #dadada;
-border-bottom: 1px solid #dadada;
-width: 279px;
-height: 199px;
-border-radius: 10px;
-padding: 22px 0;
-box-shadow: 0 3px 3px #eeeeee;
+.container-hocphi .intro h1 {
+  font-size: 60px;
+  margin-top: 0px;
 }
 
-.arrow{
-float: left;
-background: url(../img/arrow.png) no-repeat;
-display: inline-block;
-width: 50px;
-height: 32px;
-margin: 80px 15px 0 12px
+.container-hocphi .allstep {
+  display: block;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+.container-hocphi .allstep .step-inner {
+  display: inline-block;
+}
+.container-hocphi .allstep .item {
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+.container-hocphi .allstep .item a {
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+}
+.container-hocphi .allstep .item p {
+  margin-top: 20px;
+  font-weight: bold;
+}
+.container-hocphi .allstep .item a:hover {
+  color: midnightblue;
+}
+.container-hocphi .allstep .item .inner {
+  border-right: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  width: 279px;
+  height: 199px;
+  border-radius: 10px;
+  padding: 22px 0;
+  box-shadow: 0 3px 3px #eeeeee;
 }
 
+.arrow {
+  float: left;
+  background: url(../img/arrow.png) no-repeat;
+  display: inline-block;
+  width: 50px;
+  height: 32px;
+  margin: 80px 15px 0 12px;
+}
 
-.container-hocphi .recharge{
-width: 500px;
-margin: 0 auto;
-text-align: center;
-margin-top: 66px;
-
-
+.container-hocphi .recharge {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 66px;
 }
-.container-hocphi .recharge a{
-width: 250px;
-height: 70px;
-display: inline-block;
-font-size: 24px;
-font-weight: bold;
-text-transform: uppercase;
-background: #f7941e;
-border-radius: 5px;
-text-decoration: none;
-outline: none;
-color: #fff;
-padding: 25px ;
+.container-hocphi .recharge a {
+  width: 250px;
+  height: 70px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #f7941e;
+  border-radius: 5px;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  padding: 25px;
 }
-.container-hocphi .recharge a:hover{
-background:darkgreen;
-transition: 0.5s;
+.container-hocphi .recharge a:hover {
+  background: darkgreen;
+  transition: 0.5s;
 }
-.container-hocphi .note{
-padding: 50px 150px;
+.container-hocphi .note {
+  padding: 50px 150px;
 }
-.container-hocphi .note p{
-line-height: 10px;
-font-weight: bold;
-color: #000;
-
+.container-hocphi .note p {
+  line-height: 10px;
+  font-weight: bold;
+  color: #000;
 }
-.container-hocphi .note p:first-child{
-color: #ff4d4d;
-font-size: 50px;
-line-height: 20px;
+.container-hocphi .note p:first-child {
+  color: #ff4d4d;
+  font-size: 50px;
+  line-height: 20px;
 }
-.container-hocphi .note a{
-text-decoration: none;
+.container-hocphi .note a {
+  text-decoration: none;
 }
-.container-hocphi .note a:hover{
-color: midnightblue;
-transition: 0.25s;
+.container-hocphi .note a:hover {
+  color: midnightblue;
+  transition: 0.25s;
 }
-@media screen and (max-width:1280px){
-.container-hocphi .intro{
+@media screen and (max-width: 1280px) {
+  .container-hocphi .intro {
     width: 50%;
-    
-}
-.container-hocphi .intro h1{
+  }
+  .container-hocphi .intro h1 {
     font-size: 30px;
     font-weight: bold;
     margin: -1px;
-}
-.container-hocphi .allstep .item .inner{
-    
+  }
+  .container-hocphi .allstep .item .inner {
     padding: 22px 5px;
-}
-.arrow{
+  }
+  .arrow {
     width: 20px;
     height: 15px;
     margin: 92px 5px 0 5px;
     background-size: 100%;
+  }
 }
-
-}
-@media screen and (max-width:920px){
-.container-hocphi .allstep .item .inner{
+@media screen and (max-width: 920px) {
+  .container-hocphi .allstep .item .inner {
     height: 140px;
     width: 140px;
-}
-.container-hocphi .allstep .item .inner img{
+  }
+  .container-hocphi .allstep .item .inner img {
     width: 60px;
     height: 60px;
-}
-.container-hocphi .allstep .item .inner a{
+  }
+  .container-hocphi .allstep .item .inner a {
     font-size: 11px;
-    
-    
-}
-.arrow{
+  }
+  .arrow {
     width: 20px;
     height: 15px;
     margin: 92px 5px 0 5px;
     background-size: 100%;
-}
-.container-hocphi .allstep{
+  }
+  .container-hocphi .allstep {
     margin: 15px auto 0 auto;
-}
+  }
 }
 
-@media screen and (max-width:730px){
-.container-hocphi .intro{
+@media screen and (max-width: 730px) {
+  .container-hocphi .intro {
     width: 50%;
-    
-}
-.container-hocphi .intro h1{
+  }
+  .container-hocphi .intro h1 {
     font-size: 22px;
     font-weight: bold;
     margin: -1px;
-}
-.container-hocphi .recharge a{
+  }
+  .container-hocphi .recharge a {
     width: 200px;
     height: 50px;
     padding: 10px;
-}
-.container-hocphi .note{
+  }
+  .container-hocphi .note {
     padding: 70px 50px;
-}
-.container-hocphi .allstep .item .inner{
+  }
+  .container-hocphi .allstep .item .inner {
     height: 140px;
     width: 140px;
-}
-.container-hocphi .allstep .item .inner img{
+  }
+  .container-hocphi .allstep .item .inner img {
     width: 60px;
     height: 60px;
-}
-.container-hocphi .allstep .item .inner a{
+  }
+  .container-hocphi .allstep .item .inner a {
     font-size: 11px;
-    
-    
-}
-.arrow{
+  }
+  .arrow {
     width: 20px;
     height: 15px;
     margin: 92px 5px 0 5px;
     background-size: 100%;
-}
-.container-hocphi .allstep{
+  }
+  .container-hocphi .allstep {
     margin: 15px auto 0 auto;
-}
+  }
 }
