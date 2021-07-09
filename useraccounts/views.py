@@ -231,15 +231,6 @@ def detailTeacher(request, id):
     
     return render(request, 'courses/detailTeacher.html',context)
 
-@require_POST
-def cartRemove(request, id):
-    cart = Cart(request)
-    courses = get_object_or_404(Courses, id=id)
-
-    cart.remove(courses)
-
-    return render()
-
 
 def detailCourse(request, id):
 
