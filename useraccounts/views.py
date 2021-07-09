@@ -231,14 +231,24 @@ def detailTeacher(request, id):
     
     return render(request, 'courses/detailTeacher.html',context)
 
+@require_POST
+def cartRemove(request, id):
+    cart = Cart(request)
+    courses = get_object_or_404(Courses, id=id)
+
+    cart.remove(courses)
+
+    return render()
+
 
 def detailCourse(request, id):
 
     courses = Courses.objects.get(id=id)
-
-    videos = Video.objects.filter(courses=courses)
     data=Chitiet.objects.filter(macourses=id)
+    videos = Video.objects.filter(courses=courses)
+    
     context = {'courses': courses, 'videos': videos,'data':data}
+
 
     return render(request, 'courses/detailCourse.html', context)
 

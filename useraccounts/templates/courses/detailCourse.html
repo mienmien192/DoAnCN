@@ -101,6 +101,7 @@
         }
         button:focus { outline:none !important; }
         button:active { outline:none !important; }
+
     </style>
 
 </head>
@@ -156,9 +157,7 @@
 {% endif %}
 
 <section>
-  <div class="section-title">
-             <h2>Nội dung khóa học </h2>
-         </div>
+ <h2 style='text-align: center; padding:20px; '>Nội dung khoá học </h2>
 {% for item in data %}
 {% if item.parent is None %}
 
@@ -177,11 +176,10 @@
      {% for item2 in data %}
      {% if item2.parent.name == item.name %}
      <div class="card-body" style="border-bottom: 1px solid rgba(0,0,0,.25) ;">
-        {% for video in videos %}
-       <button  style="font-size: 17px; color: #000" class="btn" data-toggle="collapse" data-target=""
-               aria-expanded="true" aria-controls="collapse{{item.id}}">- <a href="{% url 'detailVideo' video.id %}">{{item2.name}}</a>
+       <button style="font-size: 17px; color: #000" class="btn" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="collapse{{item.id}}">
+        - <a href="{% url 'detailVideo' item.macourses %}" style="text-decoration: none; color:#000;">{{item2.name}} </a>
       </button>
-          {% endfor %}
+
     </div>
     {% endif  %}
     {% endfor %}
@@ -199,6 +197,7 @@
 </section>
 
 <br>
+
     <div class="container">
          <div class="section-title">
              <h2>Video bài giảng </h2>
@@ -221,6 +220,8 @@
 
             </div>{% endfor %}
         </div>
+
+    </div>
 
 
 
