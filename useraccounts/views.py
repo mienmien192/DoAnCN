@@ -244,10 +244,13 @@ def cartRemove(request, id):
 def detailCourse(request, id):
 
     courses = Courses.objects.get(id=id)
+
     videos = Video.objects.all()
-    context = {'courses': courses, 'videos': videos}
+    data=Chitiet.objects.filter(macourses=id)
+    context = {'courses': courses, 'videos': videos,'data':data}
 
     return render(request, 'courses/detailCourse.html', context)
+
 
 def detailVideo( request, pk):
     video = Video.objects.filter(pk = pk)

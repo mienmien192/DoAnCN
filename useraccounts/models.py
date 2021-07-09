@@ -4,6 +4,15 @@ from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django.utils import timezone
 
+
+class Chitiet(models.Model):
+    name=models.CharField(max_length=200)
+    parent =models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    created_at =models.DateTimeField(auto_now_add=True)
+    macourses=models.CharField(max_length=200)
+    
+    def __str__(self):
+        return "%s -- >  %s" %(self.parent,self.name)
 class Student(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
     fullname = models.CharField(max_length=200, null=True)

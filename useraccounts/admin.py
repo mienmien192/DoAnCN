@@ -15,6 +15,7 @@ admin.site.register(Question)
 admin.site.register(Result)
 admin.site.register(Exam)
 admin.site.register(Category)
+admin.site.register(Chitiet)
 
 class CommentInLine(admin.TabularInline):
     model = Comment
