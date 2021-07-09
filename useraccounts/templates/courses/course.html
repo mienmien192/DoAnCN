@@ -1,5 +1,45 @@
 {% load static %}
 {% block content%}
+<style>
+.tab {
+  overflow: hidden;
+  margin:0 50px;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  border-bottom: 2px solid #7d5fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  
+  border-top: none;
+}
+</style>
+
+
+
 
  <section class="featured spad">
         <div class="container">
@@ -10,19 +50,97 @@
 
                     </div>
                     <div class="featured__controls">
-                        <ul>
-                             <li class="active" data-filter="*">All</li>
-                            <li data-filter="">Lập trình Python</li>
-                            <li data-filter="">Lập trình php</li>
-                            <li data-filter="">Ielts</li>
-                            <li data-filter="">Tiếng nhật</li>
-                            <li data-filter="">Thi đại học</li>
-                            <li data-filter="">Giao tiếp</li>
-                        </ul>
-                    </div>
+                        <div class="tab">
+                          <button class="tablinks" onclick="Menuform(event, 'All')" id="defaultOpen">Tất cả </button>
+                          <button class="tablinks" onclick="Menuform(event, 'Python')">Lập trình Python </button>
+                          <button class="tablinks" onclick="Menuform(event, 'php')">Lập trình PHP </button>
+                      </div>
+
+                  </div>
                 </div>
             </div>
-        <div class="row featured__filter">
+            <div id="All" class="tabcontent">
+              {% for courses in courses %}
+              <div class="col-md-4 col-sm-6" >
+                <div class="featured__item" >
+                    <div class="featured__item__pic set-bg"style="border-radius: 20px"  >
+                        {% if courses.courseImg %}
+                        <img src="{{courses.courseImg.url}}" alt="" style="width:300px; height: 320px ">
+
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="{% url 'detailCourse' courses.id %}"><i class="fa fa-retweet"></i></a></li>
+
+                            <li><a href="" data-courses="{{courses.id}}" data-action ="add" class=" update-cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text" >
+                        <h6><a href="#" style="text-decoration: none;font-size:20px"><strong>{{courses.nameCourse}}</strong></a></h6>
+                        <h6><a href="#" style="text-decoration: none; font-size:18px">{{courses.description}}</a></h6>
+                        <h5 class="gia">{{courses.price|floatformat:3}} VNĐ</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+          <div id="Python" class="tabcontent">
+        
+
+                {% for python in courses_python %}
+              <div class="col-lg-3 col-md-4 col-sm-6" >
+                <div class="featured__item" >
+                    <div class="featured__item__pic set-bg"style="border-radius: 20px"  >
+                        {% if python.courseImg %}
+                        <img src="{{python.courseImg.url}}" alt="" style="width:300px; height: 320px ">
+
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="{% url 'detailCourse' python.id %}"><i class="fa fa-retweet"></i></a></li>
+
+                            <li><a href="" data-courses="{{python.id}}" data-action ="add" class=" update-cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text" >
+                        <h6><a href="#" style="text-decoration: none;font-size:20px"><strong>{{python.nameCourse}}</strong></a></h6>
+                        <h6><a href="#" style="text-decoration: none; font-size:18px">{{python.description}}</a></h6>
+                        <h5 class="gia">{{python.price|floatformat:3}} VNĐ</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+              
+          </div>
+
+          <div id="php" class="tabcontent">
+              {% for php in courses_php %}
+              <div class="col-lg-3 col-md-4 col-sm-6" >
+                <div class="featured__item" >
+                    <div class="featured__item__pic set-bg"style="border-radius: 20px"  >
+                        {% if php.courseImg %}
+                        <img src="{{php.courseImg.url}}" alt="" style="width:300px; height: 320px ">
+
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="{% url 'detailCourse' php.id %}"><i class="fa fa-retweet"></i></a></li>
+
+                            <li><a href="" data-courses="{{php.id}}" data-action ="add" class=" update-cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text" >
+                        <h6><a href="#" style="text-decoration: none;font-size:20px"><strong>{{php.nameCourse}}</strong></a></h6>
+                        <h6><a href="#" style="text-decoration: none; font-size:18px">{{php.description}}</a></h6>
+                        <h5 class="gia">{{php.price|floatformat:3}} VNĐ</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+
+       <!--  <div class="row featured__filter">
             {% for courses in courses %}
             <div class="col-lg-3 col-md-4 col-sm-6" >
                     <div class="featured__item" >
@@ -46,7 +164,26 @@
                 {% endif %}
                 </div>
                 {% endfor %}
-            </div>
+            </div> -->
         </div>
     </section>
+
+<script>
+function Menuform(evt, Menu_category) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(Menu_category).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 {% endblock %}
