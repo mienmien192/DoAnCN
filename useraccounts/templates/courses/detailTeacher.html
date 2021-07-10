@@ -1,8 +1,48 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content%}
-<body>
+<head>
+    <style>
+        #all .container .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  text-align: center;
+}
 
+/* Style the buttons inside the tab */
+#all .container .tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+#all .container .tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+#all .container .tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+#all .container .tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+    </style>
+</head>
+<body>
+    <section>
         <div class="pf-follow" style="background: url('../static/img/banner/bannerDTTeacher.jpg') no-repeat; background-size: cover;">
             <div class="wrapper">
                 <ul class="pff-list">
@@ -27,92 +67,131 @@
                 </ul>
             </div>
         </div>
+    </section>
+    <section>
+                <div id="main">
+                <div class="wrapper">
 
-        <div id="main">
-    <div class="wrapper">
-
-        <div class="pf-about clearfix">
-            {% if teachers.avatar %}
-            <div class="left-a">
-                <div class="image">
-                    <img src="{{teachers.avatar.url}}" alt="#">
-                </div>
-            </div>
-            <div class="right-a">
-                <div class="info">
-                    <div class="lbl">
-                        <h3>THÔNG TIN GIÁO VIÊN</h3>
-                    </div>
-                    <div class="details">
-                        <div class="row-a">
-                            <div class="work">
-                                <div class="icoleft"><span class="ico-user"></span></div>
-                                <div class="text">
-                                    <strong>Họ và tên</strong>
-                                    <p class="big">{{teachers.fullname}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-a">
-                            <div class="work">
-                                <div class="icoleft"><span class="ico-work"></span></div>
-                                <div class="text">
-                                    <strong>Nơi công tác:</strong>
-                                    <p class="big">{{teachers.address}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-a">
-                            <div class="left">
-                                <div class="subject">
-                                    <div class="icoleft"><span class="ico-subject"></span></div>
-                                    <div class="text">
-                                        <strong>Môn dạy:</strong>
-                                         <p class="big">{{teachers.subject}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="degree">
-                                    <div class="icoleft"><span class="ico-degree"></span></div>
-                                    <div class="text">
-                                        <strong>Học vị:</strong>
-                                        <p class="big">{{teachers.degree}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-a">
-                            <div class="left">
-                                <div class="email">
-                                    <div class="icoleft"><span class="ico-email"></span></div>
-                                    <div class="text">
-                                        <strong>Email:</strong>
-                                        <p>
-                                         <a href="{{teachers.email}}">{{teachers.email}}		</a>
-                                         </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="facebook">
-                                    <div class="icoleft"><span class="ico-facebook"></span></div>
-                                    <div class="text">
-                                        <strong>Facebook:</strong>
-                                        <p>
-                                         <a href="{{teachers.facebook}}">{{teachers.facebook}}		</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="pf-about clearfix">
+                    {% if teachers.avatar %}
+                    <div class="left-a">
+                        <div class="image">
+                            <img src="{{teachers.avatar.url}}" alt="#">
                         </div>
                     </div>
+                    <div class="right-a">
+                        <div class="info">
+                            <div class="lbl">
+                                <h3>THÔNG TIN GIÁO VIÊN</h3>
+                            </div>
+                            <div class="details">
+                                <div class="row-a">
+                                    <div class="work">
+                                        <div class="icoleft"><span class="ico-user"></span></div>
+                                        <div class="text">
+                                            <strong>Họ và tên</strong>
+                                            <p class="big">{{teachers.fullname}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-a">
+                                    <div class="work">
+                                        <div class="icoleft"><span class="ico-work"></span></div>
+                                        <div class="text">
+                                            <strong>Nơi công tác:</strong>
+                                            <p class="big">{{teachers.address}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-a">
+                                    <div class="left">
+                                        <div class="subject">
+                                            <div class="icoleft"><span class="ico-subject"></span></div>
+                                            <div class="text">
+                                                <strong>Môn dạy:</strong>
+                                                <p class="big">{{teachers.subject}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="degree">
+                                            <div class="icoleft"><span class="ico-degree"></span></div>
+                                            <div class="text">
+                                                <strong>Học vị:</strong>
+                                                <p class="big">{{teachers.degree}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-a">
+                                    <div class="left">
+                                        <div class="email">
+                                            <div class="icoleft"><span class="ico-email"></span></div>
+                                            <div class="text">
+                                                <strong>Email:</strong>
+                                                <p>
+                                                <a href="{{teachers.email}}">{{teachers.email}}		</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="facebook">
+                                            <div class="icoleft"><span class="ico-facebook"></span></div>
+                                            <div class="text">
+                                                <strong>Facebook:</strong>
+                                                <p>
+                                                <a href="{{teachers.facebook}}">{{teachers.facebook}}		</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
+
             </div>
-            {% endif %}
         </div>
+    </section>  
+        <section id="all">
+            <div class="container">
+                <div class="tab">
+                    <button class="tablinks" onclick="openDetail(event, 'description')" id="defaultOpen">Description</button>
+                    <button class="tablinks" onclick="openDetail(event, 'review')">Review</button>
+                    
+                  </div>
+                <div id="description" class="tabcontent"> 
+                    <h2>{{teachers.fullname}}</h2>
+                    <p>{{teachers.description}}</p>
+                </div>
 
-    </div>
-</div>
+                <div id="review" class="tabcontent">
+                    <h2>Review</h2>
+                    <p>Paris is the capital of France.</p> 
+                </div>
+            </div>
+
+            <script>
+                function openDetail(evt, detailName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(detailName).style.display = "block";
+                evt.currentTarget.className += " active";
+                }
+                document.getElementById("defaultOpen").click();
+            </script>
+        </section>
+
+        
 </body>
 {% endblock %}

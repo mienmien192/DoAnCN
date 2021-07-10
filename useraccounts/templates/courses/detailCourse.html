@@ -8,6 +8,16 @@
 
 
     <style type="text/css">
+        #link a {
+            color: #eb2f06 ;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        #link i{
+            font-size: 10px;
+        }
+
         #showcase .container .infor{
             float: right;
             
@@ -63,7 +73,7 @@
             font-size:37px;
         }
         #showcase{
-            background:#89AEB2;
+            
             border-bottom:1px solid #618685;
             padding-bottom: 50px;
             background-size:100%;
@@ -71,11 +81,9 @@
         }
         #showcase .row{
             height:300px;
+            
         }
         #showcase .showcase-content{
-            background:#F1E0B0;
-            color:#fff;
-            border-radius:80px;
             padding:50px;
             opacity:0.8;
             height:80px;
@@ -99,17 +107,26 @@
         margin-left:-300px;
         text-align: center;
         }
-        button:focus { outline:none !important; }
-        button:active { outline:none !important; }
-
+        #detail .container {
+            padding-left: 300px;
+        }
     </style>
 
 </head>
 
 {% if courses %}
+<section id="link">
+    <div class="container">
+        <a href="{% url 'home' %}"> Home </a>
+        <i class="fa fa-chevron-right"></i>
+        <a href="#">{{courses.nameCourse}}</a>
+    </div>
+
+</section>
 <section id="showcase">
     
     <div class="container">
+        
         <div class="infor">
             <img src="{{courses.courseImg.url}}" alt="##">
             <div class="action">
@@ -135,18 +152,19 @@
                     <p>{{courses.detail}}</p>
          </div>
     </div>
+    
 </section>
 
 <section id="detail">
     <div class="container">
         
         <div class="row center-xs center-sm center md center-lg">
-            <div class="col-xs-12 col-sm-4 col-md-4  ">
+            <div class="left col-xs-12 col-sm-4 col-md-6 ">
                 <i class="fas fa-trophy"></i><br>
                  <h4> Bạn sẽ đạt được gì sau khóa học? </h4>
                   <i class="fas fa-check"></i> <span>{{courses.benefit}}  </span>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4  ">
+            <div class="col-xs-12 col-sm-4 col-md-6  ">
                 <i class="fas fa-clipboard"></i><br>
                  <h4> Yêu cầu khi học khóa học </h4>
                   <i class="fas fa-check"></i> <span> {{courses.detail}}</span>
@@ -155,48 +173,6 @@
     </div>
 </section>
 {% endif %}
-
-<section>
- <h2 style='text-align: center; padding:20px; '>Nội dung khoá học </h2>
-{% for item in data %}
-{% if item.parent is None %}
-
-<div id="accordion" style='padding:3px 400px;'>
-  <div class="card" style="border: none;">
-    <div class="card-header" id="headingOne" style="background-color:#fff; border: 1px solid rgba(240,81,35,1.15);" >
-      <h5 class="mb-0" >
-        <button class="btn" data-toggle="collapse" data-target="#collapse{{item.id}}" aria-expanded="true" aria-controls="collapse{{item.id}}"
-        style="font-size: 17px; color: #000; outline:none !important; ">
-          + <strong>{{item.name}}</strong>
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapse{{item.id}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordion" >
-     {% for item2 in data %}
-     {% if item2.parent.name == item.name %}
-     <div class="card-body" style="border-bottom: 1px solid rgba(0,0,0,.25) ;">
-       <button style="font-size: 17px; color: #000" class="btn" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="collapse{{item.id}}">
-        - <a href="{% url 'detailVideo' item.macourses %}" style="text-decoration: none; color:#000;">{{item2.name}} </a>
-      </button>
-
-    </div>
-    {% endif  %}
-    {% endfor %}
-
-  </div>
-
-
-</div>
-
-
-
-</div>
-{% endif  %}
-{% endfor %}
-</section>
-
-<br>
 
     <div class="container">
          <div class="section-title">
