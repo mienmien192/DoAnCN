@@ -177,6 +177,47 @@
     </div>
 </section>
 {% endif %}
+<section>
+ <h2 style='text-align: center; padding:20px; '>Nội dung khoá học </h2>
+{% for item in data %}
+{% if item.parent is None %}
+
+<div id="accordion" style='padding:3px 400px;'>
+  <div class="card" style="border: none;">
+    <div class="card-header" id="headingOne" style="background-color:#fff; border: 1px solid orange; border-radius: 5px;" >
+      <h5 class="mb-0" >
+        <button class="btn" data-toggle="collapse" data-target="#collapse{{item.id}}" aria-expanded="true" aria-controls="collapse{{item.id}}"
+        style="font-size: 17px; color: #000; outline:none !important; ">
+          + <strong>{{item.name}}</strong>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapse{{item.id}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordion" >
+     {% for item2 in data %}
+     {% if item2.parent.name == item.name %}
+     <div class="card-body" style="border-bottom: 1px solid rgba(0,0,0,.25) ;">
+       <button style="font-size: 17px; color: #000" class="btn" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="collapse{{item.id}}">
+        - <a href="{% url 'detailVideo' item.macourses %}" style="text-decoration: none; color:#000;">{{item2.name}} </a>
+      </button>
+
+    </div>
+    {% endif  %}
+    {% endfor %}
+
+  </div>
+
+
+</div>
+
+
+
+</div>
+{% endif  %}
+{% endfor %}
+</section>
+
+<br>
 
     <div class="container">
          <div class="section-title">
