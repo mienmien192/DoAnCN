@@ -1,0 +1,56 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content%}
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading" >
+      <center><strong><h4 class="panel-title">Tạo bài thi</h4></strong></center>
+    </div>
+      <div class="row">
+        <div class="col-lg-11 col-md-11 col-sm-11" style="margin: 20px; font-size: 20px">
+          <form action="" method="post" autocomplete="off">
+        {%csrf_token%}
+        <div class="form-group">
+        <label for="question">Bài thi</label>
+            {% render_field questionForm.examID|attr:'required:true' class="form-control"  %}
+        <br>
+
+      <label for="question">Câu hỏi</label>
+            {% render_field questionForm.question|attr:'required:true' class="form-control" placeholder="Đặt câu hỏi ở đây?" %}
+
+        <br>
+      <label for="question_number">Điểm</label>
+            {% render_field questionForm.marks|attr:'required:true' class="form-control" placeholder="10" %}
+
+        <br>
+      <label for="option1">Lựa chọn 1</label>
+            {% render_field questionForm.option1|attr:'required:true' class="form-control" placeholder="A" %}
+
+        <br>
+      <label for="option2">Lựa chọn 2</label>
+            {% render_field questionForm.option2|attr:'required:true' class="form-control" placeholder="B" %}
+
+        <br>
+      <label for="option3">Lựa chọn 3</label>
+            {% render_field questionForm.option3|attr:'required:true' class="form-control" placeholder="C" %}
+
+        <br>
+      <label for="option4">Lựa chọn 4</label>
+            {% render_field questionForm.option4|attr:'required:true' class="form-control" placeholder="D" %}
+
+        <br>
+      <label for="answer">Câu trả lời đúng</label>
+            {% render_field questionForm.answer|attr:'required:true' class="form-control" %}
+
+    </div>
+            <center><button type="submit" class="btn btn-primary">Tạo</button></center>
+      </form>
+        </div>
+      </div>
+
+  </div>
+
+</div>
+{% endblock content %}

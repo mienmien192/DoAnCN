@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from .models import *
-from .cart import Cart
+from . import forms
 from .forms import CreateUserForm, StudentForm, CommentForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
@@ -348,4 +348,29 @@ def delete(request, id):
             items.delete()
     return HttpResponseRedirect(reverse('cart'))
 
+def addExam(request):
+    questionForm = forms.QuestionForm()
+    if request.method == 'POST':
+        questionForm = forms.QuestionForm(request.POST)
+        if questionForm.is_valid():
+            question=questionForm.save(commit=False)
+            exam = Exam.objects.get(id=request.POST.get('examID'))
+            question.exam = exam
+            question.save()
+        else:
+            print("form is invalid")
+        return HttpResponseRedirect('/viewExam')
+    context = {'questionForm':questionForm}
+    return render(request, 'exam/add_exam.html',context)
 
+
+def adminQuestion(request):
+    return render(request, 'exam/admin_question.html')
+
+def viewExam(request):
+    exam = Exam.objects.all()
+    return render(request, 'exam/viewExam.html', {'exam': exam})
+
+def viewQuestion(request, pk):
+    questions= Question.objects.all().filter(exam_id=pk)
+    return render(request, 'exam/viewQuestion.html', {'questions':questions})

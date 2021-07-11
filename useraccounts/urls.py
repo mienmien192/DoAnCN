@@ -45,6 +45,10 @@ urlpatterns = [
     path('paypal/', views.paypal, name="paypal"),
     path('complete/', views.paymentComplete, name="complete"),
     path('delete/<int:id>', views.delete, name ="delete"),
+    path('addExam/', views.addExam, name = "addExam"),
+    path('adminQuestion/', views.adminQuestion, name = "adminQuestion"),
+    path('viewExam/', views.viewExam, name = "viewExam"),
+    path('viewQuestion/<int:pk>', views.viewQuestion,name='viewQuestion'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
