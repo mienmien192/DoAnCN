@@ -185,5 +185,22 @@ function Menuform(evt, Menu_category) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+$('a.update-cart').click(function(event){
+    		event.preventDefault(); //vô hiệu hóa sự load lại trang
+    		 
+    		var href=$(this).attr("href");
+    		$.ajax({
+    			url:href,
+    			type:'GET',
+    			data:{},
+    			success:function(){
+    				swal("Good job!", "Đã thêm khóa học!", "success");
+                   
+    			}
+    		});
+    	});
+
+
+
 </script>
 {% endblock %}
