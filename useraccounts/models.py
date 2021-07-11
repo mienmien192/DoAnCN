@@ -153,7 +153,6 @@ class Exam(models.Model):
 
 class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE, default="")
-    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
     marks = models.PositiveIntegerField()
     question = models.CharField(max_length=600)
     option1 = models.CharField(max_length=200)
@@ -174,5 +173,6 @@ class Order(models.Model):
 
     def __str__(self):
         return self.courses.nameCourse
+
 
 

@@ -374,3 +374,8 @@ def viewExam(request):
 def viewQuestion(request, pk):
     questions= Question.objects.all().filter(exam_id=pk)
     return render(request, 'exam/viewQuestion.html', {'questions':questions})
+
+def deleteQuestion(request,pk):
+    question= Question.objects.get(id=pk)
+    question.delete()
+    return HttpResponseRedirect('/viewExam')

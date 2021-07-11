@@ -49,6 +49,7 @@ urlpatterns = [
     path('adminQuestion/', views.adminQuestion, name = "adminQuestion"),
     path('viewExam/', views.viewExam, name = "viewExam"),
     path('viewQuestion/<int:pk>', views.viewQuestion,name='viewQuestion'),
+    path('deleteQuestion/<int:pk>', views.deleteQuestion,name='deleteQuestion'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
