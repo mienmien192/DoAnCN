@@ -88,8 +88,14 @@ class Teacher(models.Model):
     subject = models.CharField(max_length=200, null=True)
     degree = models.CharField(max_length=200, null=True)
     facebook = models.CharField(max_length=200, null=True)
+    exp = models.CharField(max_length=200, null=True)
+    follow =models.CharField(max_length=200, null=True)
+    course =models.CharField(max_length=200, null=True)
     avatar = models.ImageField(default='profile1.png', upload_to='teacherfile', max_length=254, blank=True, null=True)
     description = models.TextField(default='')
+    review = models.TextField(default='')
+    
+
     def __str__(self):
         return self.fullname
 
