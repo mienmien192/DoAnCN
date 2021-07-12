@@ -1,5 +1,6 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
+
 {% block content%}
 <head>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -21,33 +22,26 @@
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Điểm cá nhân</h6>
+      <h6 class="panel-title">View Marks</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
 
-          <th>Tên bài thi</th>
+          <th>Exam Name</th>
 
-          <th>Tổng điểm đạt được</th>
-          <th>Attempt</th>
-          <th>Ngày hoàn thành</th>
+          <th>View Marks</th>
         </tr>
       </thead>
-      {% for t in results %}
+      {% for t in exam %}
       <tr>
 
-        <td> {{t.exam}}</td>
-        <td> {{t.marks}}</td>
-        <td>Attemp {{ forloop.counter }}</td>
-        <td> {{t.date}}</td>
+        <td> {{t.exam_name}}</td>
 
-
+        <td><a class="btn btn-danger btn-xs" href="{% url 'check-marks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
 </div>
-
-<br><br><br><br><br><br>
-{% endblock %}
+{% endblock content %}

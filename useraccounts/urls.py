@@ -50,6 +50,8 @@ urlpatterns = [
     path('viewExam/', views.viewExam, name = "viewExam"),
     path('viewQuestion/<int:pk>', views.viewQuestion,name='viewQuestion'),
     path('deleteQuestion/<int:pk>', views.deleteQuestion,name='deleteQuestion'),
+    path('check-marks/<int:pk>', views.check_marks_view,name='check-marks'),
+    path('student-marks', views.student_marks,name='student-marks'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

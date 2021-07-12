@@ -53,6 +53,7 @@ class Courses(models.Model):
     )
     detail = models.TextField(default='')
     benefit = models.TextField(default='')
+    makhoahoc = models.CharField(max_length=200, default="")
     def __str__(self):
         return self.nameCourse
 class OrderCourse(models.Model):
@@ -130,8 +131,7 @@ class Video(models.Model):
     thumbnail = models.FileField(default= "", upload_to='thumbnails', validators=[
                                  FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
     date_posted = models.DateTimeField(default=timezone.now)
-    likes = models.ManyToManyField(User, blank=True, related_name='likes')
-    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
+    makhoahoc = models.CharField(max_length=200, default="")
 
     class Meta:
         verbose_name = 'video'
