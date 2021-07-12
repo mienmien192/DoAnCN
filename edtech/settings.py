@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_filters',
 ]
-
+LOGIN_REDIRECT_URL='path/to/url'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

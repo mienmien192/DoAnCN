@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 from . import forms
 from .forms import CreateUserForm, StudentForm, CommentForm
-
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -289,7 +289,7 @@ def take_exam_view(request, pk):
     return render(request, 'exam/take_exam.html',
                   {'exam': exam, 'total_questions': total_questions, 'total_marks': total_marks})
 
-
+@login_required(login_url='LOGIN_REDIRECT_URL')
 def start_exam_view(request, pk):
     exam = Exam.objects.get(id=pk)
     questions = Question.objects.all().filter(exam=exam)
