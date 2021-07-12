@@ -133,6 +133,7 @@ class Video(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     makhoahoc = models.CharField(max_length=200, default="")
 
+
     class Meta:
         verbose_name = 'video'
         verbose_name_plural = 'videos'
