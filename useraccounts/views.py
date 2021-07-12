@@ -246,7 +246,7 @@ def detailTeacher(request, id):
 def detailCourse(request, id):
     courses = Courses.objects.get(id=id)
     data = Chitiet.objects.filter(macourses=id)
-    videos = Video.objects.filter(courses=courses)
+    videos = Video.objects.filter(makhoahoc=id)
 
     context = {'courses': courses, 'videos': videos, 'data': data}
 
