@@ -82,12 +82,15 @@ def home(request):
         courses = Courses.objects.filter(nameCourse__icontains=searched)
         teachers = Teacher.objects.filter(fullname__icontains=searched)
         category = Category.objects.filter(namecategory__icontains=searched)
+
     else:
         courses_python = Courses.objects.filter(category=1)
         courses_php = Courses.objects.filter(category=2)
         courses = Courses.objects.all()
         teachers = Teacher.objects.all()
         category = Category.objects.all()
+
+
     context = {'teachers': teachers, 'courses': courses, 'category': category, 'courses_python': courses_python,
                'courses_php': courses_php}
     return render(request, 'accounts/base.html', context)

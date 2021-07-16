@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'useraccounts',
     'widget_tweaks',
     'django_filters',
+    'django_social_share',
 ]
 LOGIN_REDIRECT_URL='path/to/url'
 MIDDLEWARE = [
