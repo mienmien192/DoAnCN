@@ -23,7 +23,7 @@
 
 </style>
 
-<header class="header"  >
+<header class="header" >
 
     <div class="header__top">
         <div class="container">
@@ -31,7 +31,7 @@
 
                 <div class="col-lg-6 col-md-4">
                     <div class="header__top__left">
-
+                        <strong><a href="{% url 'dashboard' %}" style="font-size: 15px;color: #000; text-decoration: none">Admin</a></strong>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-8">
@@ -101,7 +101,7 @@
             <div class="col-lg-2">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="#"><i class="fa fa-heart"></i> </a></li>
                         <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i>
                             <!-- <span id="cart-total">
                             0

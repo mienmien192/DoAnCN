@@ -82,6 +82,8 @@ def home(request):
         courses = Courses.objects.filter(nameCourse__icontains=searched)
         teachers = Teacher.objects.filter(fullname__icontains=searched)
         category = Category.objects.filter(namecategory__icontains=searched)
+        courses_python = Courses.objects.filter(category=1)
+        courses_php = Courses.objects.filter(category=2)
 
     else:
         courses_python = Courses.objects.filter(category=1)
@@ -108,26 +110,30 @@ def getcategory(request):
     context = {'category': category}
     return render(request, 'accounts/sectionhero.html', context)
 
-
+@login_required
 def dashboard(request):
     teacher = Teacher.objects.all()
     student = Student.objects.all()
-
-    context = {'teacher': teacher, 'student': student}
-    return render(request, 'accounts/dashboard.html', context)
+    courses = Courses.objects.all()
+    context = {'teacher': teacher, 'student': student, 'courses':courses}
+    return render(request, 'admin/dashboard.html', context)
 
 
 def courses(request):
     courses = Courses.objects.all()
     context = {'courses': courses}
-    return render(request, 'accounts/courses.html', context)
+    return render(request, 'admin/courses.html', context)
 
 
-def student(request, pk_test):
-    student = Student.objects.get(id=pk_test)
+def student(request):
+    student = Student.objects.all()
     context = {'student': student}
-    return render(request, 'accounts/student.html', context)
+    return render(request, 'admin/student.html', context)
 
+def Teachers(request):
+    teacher = Teacher.objects.all()
+    context = {'teacher': teacher}
+    return render(request, 'admin/teacher.html', context)
 
 def loginUser(request):
     if request.method == 'POST':
@@ -172,9 +178,9 @@ def course(request):
     courses = Courses.objects.all()
     context = {'courses': courses}
     return render(request, 'courses/course.html', context)
-    # store
 
 
+@login_required
 def cart(request):
     if request.user.is_authenticated:
         student = request.user.student
@@ -188,7 +194,7 @@ def cart(request):
     context = {'items': items, 'order': order}
     return render(request, 'courses/cart.html', context)
 
-
+@login_required
 def checkout(request):
     if request.user.is_authenticated:
         student = request.user.student
@@ -219,7 +225,7 @@ def infoHocPhi(request):
     context = {}
     return render(request, 'accounts/infoHocPhi.html')
 
-
+@login_required
 def updateItem(request):
     data = json.loads(request.body)
     courseId = data['courseId']
@@ -245,7 +251,7 @@ def detailTeacher(request, id):
 
     return render(request, 'courses/detailTeacher.html', context)
 
-
+@login_required
 def detailCourse(request, id):
     courses = Courses.objects.get(id=id)
     data = Chitiet.objects.filter(macourses=id)
@@ -281,7 +287,7 @@ def tuLuyen(request):
     context = {'exam': exam}
     return render(request, 'exam/tuluyen.html', context)
 
-
+@login_required
 def take_exam_view(request, pk):
     exam = Exam.objects.get(id=pk)
     total_questions = Question.objects.all().filter(exam=exam).count()
@@ -292,7 +298,7 @@ def take_exam_view(request, pk):
     return render(request, 'exam/take_exam.html',
                   {'exam': exam, 'total_questions': total_questions, 'total_marks': total_marks})
 
-@login_required(login_url='LOGIN_REDIRECT_URL')
+@login_required
 def start_exam_view(request, pk):
     exam = Exam.objects.get(id=pk)
     questions = Question.objects.all().filter(exam=exam)
@@ -401,3 +407,6 @@ def deleteQuestion(request, pk):
     question = Question.objects.get(id=pk)
     question.delete()
     return HttpResponseRedirect('/viewExam')
+
+def addCourse(request):
+    return render(request, 'exam/viewQuestion.html', )

@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf.urls.static import static
-
+from django.conf.urls import include
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
@@ -9,10 +9,12 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('dashboard/', views.dashboard),
-    path('courses/', views.courses),
-    path('student/<str:pk_test>/', views.student),
+    path('dashboard/', views.dashboard, name="dashboard"),
+    path('courses/', views.courses, name="courses"),
+    path('student/', views.student,name="student"),
+    path('teacher/', views.Teachers,name="teacher"),
     path('login/', views.loginUser, name="login"),
+    path('oauth/', include('social_django.urls', namespace='social')),
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.register, name="register"),
     path('profile/', views.profile, name="profile"),

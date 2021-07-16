@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% load static %}
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/adminlte.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/adminlte.css.map' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/adminlte.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/adminlte.min.css.map' %}">
+  <script src="{% static 'js/adminlte.js' %}"></script>
+   <script src="{% static 'js/adminlte.js.map' %}"></script>
+   <script src="{% static 'js/adminlte.min.js' %}"></script>
+   <script src="{% static 'js/adminlte.min.js.map' %}"></script>
+   <script src="{% static 'js/demo.js' %}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include 'admin/css.html' %}
+
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+   <!-- Navbar -->
+  {% include 'admin/navbar.html' %}
+<!--  sidebar-->
+  {% include 'admin/sidebar.html' %}
+
+<!--    main-->
+    {% include 'admin/main.html' %}
+    <!--footer-->
+     {% include 'admin/footer.html' %}
+<!--  js-->
+
+  {% include 'admin/js.html' %}
+
+</div>
+
+</body>
+
+</html>
