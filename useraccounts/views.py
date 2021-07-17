@@ -1,5 +1,8 @@
+import random
+import re
+import requests
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from .models import *
@@ -7,14 +10,70 @@ from . import forms
 from .forms import CreateUserForm, StudentForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 import json
+from pprint import pprint
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.urls import reverse
 from datetime import date, timedelta
 
 from tkinter import messagebox as tkMessageBox
+
+answerfb ={
+    'hi': ["""" Tôi có thể giúp gì không? """,
+                 """ Truy cập trang web của chúng tôi ngay đi!!"""],
+    'more': [""" Các bạn có thể tham khảo qua trang web của chúng tôi """],
+    'thanks': [""" You're welcome!!!"""],
+    'bye': [""" Hẹn gặp lại bạn nhé!!! """]
+}
+
+def post_facebook_message(fbid, recevied_message):
+    tokens = re.sub(r"[^a-zA-Z0-9\s]", '', recevied_message).lower().split()
+    answerfb_text = ''
+    for token in tokens:
+        if token in answerfb:
+            answerfb_text = random.choice(answerfb[token])
+            break
+    if not answerfb_text:
+        answerfb_text = "Bạn cần tư vấn gì? Gửi 'hi','more', 'thanks','bye' để tôi có thể tư vấn"
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BABWwJT5ZClWZA9wH4D1IBYh9Pli15aCjYgXghGI405Gb7rXki07jX2nyFcAyvOJNf' \
+                           'b7ZAYGa5BPf7mW1qqJy6eBY5ZA9IFaA8sVpsS7ZCZCUfBrCKxt1swvcpuBTnFq1thJsC29ImhiW5JJUFOoi6zXdsIhsF9WOExtefhPuvF'
+    response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"text": answerfb_text}})
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"}, data=response_msg)
+    pprint(status.json())
+
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BABWwJT5ZClWZA9wH4D1IBYh9Pli15aCjYgXghGI405Gb7rXki07jX2nyFcAyvOJNf' \
+                       'b7ZAYGa5BPf7mW1qqJy6eBY5ZA9IFaA8sVpsS7ZCZCUfBrCKxt1swvcpuBTnFq1thJsC29ImhiW5JJUFOoi6zXdsIhsF9WOExtefhPuvF'
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":recevied_message}})
+    status = requests.post(post_message_url, headers = {"Content-Type":"application/json"}, data=response_msg)
+    pprint(status.json())
+
+class edtechBot(generic.View):
+    def get(self, request, *args, **kwargs):
+        if self.request.GET['hub.verify_token'] == '123456':
+            return HttpResponse(self.request.GET['hub.challenge'])
+        else:
+            return HttpResponse('Error, invalid Token')
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return generic.View.dispatch(self, request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        incoming_message = json.loads(self.request.body.decode('utf-8'))
+
+        for entry in incoming_message['entry']:
+            for message in entry['messaging']:
+                if 'message' in message:
+                    #print the message to the terminal
+                    pprint(message)
+                    # Assuming the sender only sends text. Non-text messages like stikers, audio, picture
+                    post_facebook_message(message['sender']['id'], message['message']['text'])
+
+        return HttpResponse()
+
 
 
 # app = Flask(__name__)

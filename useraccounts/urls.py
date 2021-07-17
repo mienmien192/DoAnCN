@@ -1,12 +1,13 @@
 from django.urls import path
+
 from . import views
 from django.conf.urls.static import static
-from django.conf.urls import include
+from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 from . import views
-
+from .views import edtechBot
 urlpatterns = [
     path('', views.home, name="home"),
     path('dashboard/', views.dashboard, name="dashboard"),
@@ -56,6 +57,7 @@ urlpatterns = [
     path('deleteQuestion/<int:pk>', views.deleteQuestion, name='deleteQuestion'),
     path('check-marks/<int:pk>', views.check_marks_view, name='check-marks'),
     path('student-marks', views.student_marks, name='student-marks'),
+    url(r'^a60feebc26793373f63a0227e135a4828f490af407bee0582a/?$', edtechBot.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
