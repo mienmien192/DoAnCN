@@ -36,6 +36,7 @@ urlpatterns = [
     path('courseGrid/', views.courseGrid, name="courseGrid"),
     path('update_item/', views.updateItem, name="update_item"),
     path('contact/', views.contact, name="contact"),
+    path('blog/', views.blog, name="blog"),
     path('detailTeacher/<int:id>', views.detailTeacher, name="detailTeacher"),
     path('detailCourse/<int:id>', views.detailCourse, name="detailCourse"),
     path('detailVideo/<int:pk>', views.detailVideo, name ="detailVideo"),

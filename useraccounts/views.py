@@ -225,6 +225,10 @@ def infoHocPhi(request):
     context = {}
     return render(request, 'accounts/infoHocPhi.html')
 
+def blog(request):
+    context = {}
+    return render(request, 'accounts/blog.html')
+
 @login_required
 def updateItem(request):
     data = json.loads(request.body)
