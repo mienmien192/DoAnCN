@@ -50,7 +50,8 @@ def contact(request):
         From :{}
         '''.format(data['name'], data['message'], data['email'])
         send_mail(data['subject'], message, '', ['projectdoan21@gmail.com'])
-        tkMessageBox.showinfo(title="Thông báo", message="Yêu cầu của bạn đã được gửi đi")
+        tkMessageBox.showinfo(
+            title="Thông báo", message="Yêu cầu của bạn đã được gửi đi")
         # Thay doi gmail admin
 
     return render(request, "accounts/email.html", {})
@@ -92,7 +93,6 @@ def home(request):
         teachers = Teacher.objects.all()
         category = Category.objects.all()
 
-
     context = {'teachers': teachers, 'courses': courses, 'category': category, 'courses_python': courses_python,
                'courses_php': courses_php}
     return render(request, 'accounts/base.html', context)
@@ -110,12 +110,13 @@ def getcategory(request):
     context = {'category': category}
     return render(request, 'accounts/sectionhero.html', context)
 
+
 @login_required
 def dashboard(request):
     teacher = Teacher.objects.all()
     student = Student.objects.all()
     courses = Courses.objects.all()
-    context = {'teacher': teacher, 'student': student, 'courses':courses}
+    context = {'teacher': teacher, 'student': student, 'courses': courses}
     return render(request, 'admin/dashboard.html', context)
 
 
@@ -130,10 +131,20 @@ def student(request):
     context = {'student': student}
     return render(request, 'admin/student.html', context)
 
+
 def Teachers(request):
     teacher = Teacher.objects.all()
     context = {'teacher': teacher}
     return render(request, 'admin/teacher.html', context)
+
+
+def Blog(request):
+    # blog = Blog.objects.all()
+    # context = {'blog : blog'}
+    context = {}
+
+    return render(request, 'accounts/blog.html')
+
 
 def loginUser(request):
     if request.method == 'POST':
@@ -184,7 +195,8 @@ def course(request):
 def cart(request):
     if request.user.is_authenticated:
         student = request.user.student
-        order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+        order, created = OrderCourse.objects.get_or_create(
+            student=student, complete=False)
         items = order.orderitem_set.all()
 
     else:
@@ -194,11 +206,13 @@ def cart(request):
     context = {'items': items, 'order': order}
     return render(request, 'courses/cart.html', context)
 
+
 @login_required
 def checkout(request):
     if request.user.is_authenticated:
         student = request.user.student
-        order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+        order, created = OrderCourse.objects.get_or_create(
+            student=student, complete=False)
         items = order.orderitem_set.all()
 
     else:
@@ -225,9 +239,18 @@ def infoHocPhi(request):
     context = {}
     return render(request, 'accounts/infoHocPhi.html')
 
-def blog(request):
+
+def blogDetail(request):
     context = {}
-    return render(request, 'accounts/blog.html')
+    return render(request, 'accounts/blogDetail.html')
+
+
+def detailTeacher(request, id):
+    teachers = Teacher.objects.get(id=id)
+    context = {'teachers': teachers}
+
+    return render(request, 'courses/detailTeacher.html', context)
+
 
 @login_required
 def updateItem(request):
@@ -241,19 +264,15 @@ def updateItem(request):
     student = request.user.student
     courses = Courses.objects.get(id=courseId)
 
-    order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, courses=courses)
+    order, created = OrderCourse.objects.get_or_create(
+        student=student, complete=False)
+    orderItem, created = OrderItem.objects.get_or_create(
+        order=order, courses=courses)
 
     orderItem.save()
 
     return JsonResponse('Item was added.', safe=False)
 
-
-def detailTeacher(request, id):
-    teachers = Teacher.objects.get(id=id)
-    context = {'teachers': teachers}
-
-    return render(request, 'courses/detailTeacher.html', context)
 
 @login_required
 def detailCourse(request, id):
@@ -291,6 +310,7 @@ def tuLuyen(request):
     context = {'exam': exam}
     return render(request, 'exam/tuluyen.html', context)
 
+
 @login_required
 def take_exam_view(request, pk):
     exam = Exam.objects.get(id=pk)
@@ -302,13 +322,15 @@ def take_exam_view(request, pk):
     return render(request, 'exam/take_exam.html',
                   {'exam': exam, 'total_questions': total_questions, 'total_marks': total_marks})
 
+
 @login_required
 def start_exam_view(request, pk):
     exam = Exam.objects.get(id=pk)
     questions = Question.objects.all().filter(exam=exam)
     if request.method == 'POST':
         pass
-    response = render(request, 'exam/start_exam.html', {'exam': exam, 'questions': questions})
+    response = render(request, 'exam/start_exam.html',
+                      {'exam': exam, 'questions': questions})
     response.set_cookie('exam_id', exam.id)
     return response
 
@@ -371,7 +393,8 @@ def delete(request, id):
     if request.method == "POST":
         if request.user.is_authenticated:
             student = request.user.student
-            order, created = OrderCourse.objects.get_or_create(student=student, complete=False)
+            order, created = OrderCourse.objects.get_or_create(
+                student=student, complete=False)
             items = order.orderitem_set.get(pk=id)
             items.delete()
     return HttpResponseRedirect(reverse('cart'))
@@ -411,6 +434,7 @@ def deleteQuestion(request, pk):
     question = Question.objects.get(id=pk)
     question.delete()
     return HttpResponseRedirect('/viewExam')
+
 
 def addCourse(request):
     return render(request, 'exam/viewQuestion.html', )

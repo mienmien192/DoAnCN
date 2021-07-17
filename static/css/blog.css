@@ -1,0 +1,26 @@
+.banner {
+  background-image: url(../img/banner/bannernews.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 220px;
+}
+
+.banner .contain {
+  align-items: center;
+  text-align: center;
+  padding: 45px 0 40px;
+}
+
+.banner .contain h1 {
+  font-size: 45px;
+  font-weight: 800;
+}
+.banner .contain a,
+span {
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.blog a {
+  text-decoration: none;
+}
