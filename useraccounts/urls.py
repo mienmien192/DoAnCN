@@ -57,7 +57,7 @@ urlpatterns = [
     path('deleteQuestion/<int:pk>', views.deleteQuestion, name='deleteQuestion'),
     path('check-marks/<int:pk>', views.check_marks_view, name='check-marks'),
     path('student-marks', views.student_marks, name='student-marks'),
-    url(r'^a60feebc26793373f63a0227e135a4828f490af407bee0582a/?$', edtechBot.as_view())
+    url(r'^9a5bf40a28d78050ceddc57c70c5b79f7c38d4ea2f83ed0f10/?$', edtechBot.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

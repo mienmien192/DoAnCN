@@ -39,15 +39,15 @@ def post_facebook_message(fbid, recevied_message):
             break
     if not answerfb_text:
         answerfb_text = "Bạn cần tư vấn gì? Gửi 'hi','more', 'thanks','bye' để tôi có thể tư vấn"
-    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BABWwJT5ZClWZA9wH4D1IBYh9Pli15aCjYgXghGI405Gb7rXki07jX2nyFcAyvOJNf' \
-                           'b7ZAYGa5BPf7mW1qqJy6eBY5ZA9IFaA8sVpsS7ZCZCUfBrCKxt1swvcpuBTnFq1thJsC29ImhiW5JJUFOoi6zXdsIhsF9WOExtefhPuvF'
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BAJtMyMBMnHI2GbjCgNYI0gOe0Yvs6K3g0SanZARWUubK12ibyyZANZB1RgtkR3M' \
+                       '6GcN6UFCQ8AWX8QL335b2DAb8P1C5k20RLOc1sQMWX50yc7VWf18pP7pyPigHHmB4h5WOHqBPsjeAaLuj2e2vF92ua27XKRQjIA8BEAG'
     response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"text": answerfb_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"}, data=response_msg)
     pprint(status.json())
 
-    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BABWwJT5ZClWZA9wH4D1IBYh9Pli15aCjYgXghGI405Gb7rXki07jX2nyFcAyvOJNf' \
-                       'b7ZAYGa5BPf7mW1qqJy6eBY5ZA9IFaA8sVpsS7ZCZCUfBrCKxt1swvcpuBTnFq1thJsC29ImhiW5JJUFOoi6zXdsIhsF9WOExtefhPuvF'
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":recevied_message}})
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAEro2tttg8BAJtMyMBMnHI2GbjCgNYI0gOe0Yvs6K3g0SanZARWUubK12ibyyZANZB1RgtkR3M' \
+                       '6GcN6UFCQ8AWX8QL335b2DAb8P1C5k20RLOc1sQMWX50yc7VWf18pP7pyPigHHmB4h5WOHqBPsjeAaLuj2e2vF92ua27XKRQjIA8BEAG'
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message": {"text": recevied_message}})
     status = requests.post(post_message_url, headers = {"Content-Type":"application/json"}, data=response_msg)
     pprint(status.json())
 

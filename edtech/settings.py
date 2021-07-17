@@ -14,8 +14,8 @@ SECRET_KEY = 'django-insecure-i@p3^22wd(p+ld)-^z^s4rsl#3c-#2dtn6g+%lwdbrsc@r8z0q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# <<<<<<< HEAD
-ALLOWED_HOSTS = ['localhost','bec45da0e216.ngrok.io','edtechteam21.herokuapp.com']
+
+ALLOWED_HOSTS = ['localhost','044ca317568f.ngrok.io','edtechteam21.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_social_share',
     'social_django',
-    'chatterbot.ext.django_chatterbot',
+
 ]
 LOGIN_REDIRECT_URL='path/to/url'
 MIDDLEWARE = [
