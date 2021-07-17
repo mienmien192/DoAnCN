@@ -15,14 +15,8 @@ SECRET_KEY = 'django-insecure-i@p3^22wd(p+ld)-^z^s4rsl#3c-#2dtn6g+%lwdbrsc@r8z0q
 DEBUG = True
 
 # <<<<<<< HEAD
-ALLOWED_HOSTS = ['localhost','bec45da0e216.ngrok.io']
-# =======
-# ALLOWED_HOSTS = ['localhost', 'edtechteam21.herokuapp.com']
-# >>>>>>> dd1225dd4fe398852d42fc059ce81a53ca3d5d44
+ALLOWED_HOSTS = ['localhost','bec45da0e216.ngrok.io','edtechteam21.herokuapp.com']
 
-#https: // bec45da0e216.ngrok.io / a60feebc26793373f63a0227e135a4828f490af407bee0582a
-
-# Application definition
 
 INSTALLED_APPS = [
 
@@ -49,10 +43,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'edtech.urls'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
