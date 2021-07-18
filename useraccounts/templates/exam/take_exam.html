@@ -10,14 +10,14 @@
 
 </head>
 <div class="container my-4">
-    <div class="jumbotron">
+    <div class="jumbotron" >
 
-	      <h3 class="text-info text-center">Trước khi bắt đầu exam, đây là những điều cần nắm</h3>
+	      <h3 style="color: #000; font-weight: bold" class="text-center">Trước khi bắt đầu exam, đây là những điều cần nắm</h3>
 
         <div class="row">
 
             <div class="card border-info mx-4 my-4">
-                <div class="card-body text-info">
+                <div class="card-body">
 
                     <h4 class="card-title">Chi tiết kỳ thi :</h4>
                     <p class="card-text">
@@ -45,7 +45,8 @@
                             <li>Bạn sẽ được cho biết điểm của mình ngay lập tức khi bạn gửi câu trả lời.</li>
                         </ul>
                     <p></p>
-                    <a href="{% url 'start-exam' exam.id  %}" class="btn btn-info">Let's Start</a>
+                    <center><a style="border: none; background: #000; color: #fff; padding: 10px; border-radius:10px; font-size: 18px; text-decoration: none;"
+                               href="{% url 'start-exam' exam.id  %}" class="btn btn-info">Bắt đầu</a></center>
                 </div>
                 <div class="card-footer">Cố lên</div>
             </div>

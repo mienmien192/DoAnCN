@@ -181,5 +181,16 @@ class Order(models.Model):
     def __str__(self):
         return self.courses.nameCourse
 
+class BlogDetail(models.Model):
+    title = models.CharField(max_length=100)
+    paragraph1 = models.TextField(default='')
+    paragraph2 = models.TextField(default='')
+    paragraph3 = models.TextField(default='')
+    img1 = models.ImageField(default='', upload_to='blogfile', max_length=254, blank=True, null=True)
+    img2 = models.ImageField(default='', upload_to='blogfile', max_length=254, blank=True, null=True)
+    img3 = models.ImageField(default='', upload_to='blogfile', max_length=254, blank=True, null=True)
+    author = models.CharField(max_length=100)
+    created_on = models.DateTimeField(auto_now_add=True)
 
-
+    def __str__(self):
+        return self.title

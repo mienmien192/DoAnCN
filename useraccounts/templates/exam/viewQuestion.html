@@ -22,7 +22,8 @@
 <br><br>
 
 <div class="container">
-  <a href="{% url 'viewExam' %}">Go Back</a>
+  <a style="border: none; background: #000; color: #fff; padding: 10px; border-radius:10px; font-size: 18px; text-decoration: none;"
+     href="{% url 'viewExam' %}">Quay lại</a> <br><br>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h6 class="panel-title">Bộ câu hỏi</h6>
@@ -31,10 +32,10 @@
       <thead>
         <tr>
 
-          <th>Question</th>
+          <th>Câu hỏi</th>
 
-          <th>Marks</th>
-          <th>Delete Question</th>
+          <th>Điểm</th>
+          <th>Xóa câu hỏi</th>
         </tr>
       </thead>
       {% for c in questions %}
@@ -43,7 +44,7 @@
         <td> {{c.question}}</td>
 
         <td>{{c.marks}}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'deleteQuestion' c.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'deleteQuestion' c.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 
       </tr>
       {% endfor %}

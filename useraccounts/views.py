@@ -151,11 +151,15 @@ def home(request):
         courses = Courses.objects.all()
         teachers = Teacher.objects.all()
         category = Category.objects.all()
+        blogDetail = BlogDetail.objects.all()
 
     context = {'teachers': teachers, 'courses': courses, 'category': category, 'courses_python': courses_python,
-               'courses_php': courses_php}
+               'courses_php': courses_php,'blogDetail':blogDetail}
     return render(request, 'accounts/base.html', context)
-
+def news(request):
+    blogDetail = BlogDetail.objects.all()
+    context = {'blogDetail':blogDetail}
+    return render(request, 'accounts/news.html', context)
 
 def category(request, id):
     libcourse = LibCourse.objects.filter(category=id)
@@ -198,11 +202,9 @@ def Teachers(request):
 
 
 def Blog(request):
-    # blog = Blog.objects.all()
-    # context = {'blog : blog'}
-    context = {}
-
-    return render(request, 'accounts/blog.html')
+    blogs = BlogDetail.objects.all()
+    context = {'blogs':blogs }
+    return render(request, 'accounts/blog.html',context)
 
 
 def loginUser(request):
@@ -299,9 +301,10 @@ def infoHocPhi(request):
     return render(request, 'accounts/infoHocPhi.html')
 
 
-def blogDetail(request):
-    context = {}
-    return render(request, 'accounts/blogDetail.html')
+def blogDetail(request, id):
+    blogs = BlogDetail.objects.get(id=id)
+    context = {'blogs':blogs}
+    return render(request, 'accounts/blogDetail.html',context)
 
 
 def detailTeacher(request, id):

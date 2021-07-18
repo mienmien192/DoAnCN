@@ -17,10 +17,12 @@
 
   </style>
 <div class="container">
-   <a href="{% url 'addExam' %}">Go Back</a>
+   <a href="{% url 'addExam' %}"
+      style="border: none; background: #000; color: #fff; padding: 10px; border-radius:10px; font-size: 18px; text-decoration: none;">Quay lại</a>
+    <br><br>
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Chọn bài thi để xem câu hỏi</h6>
+      <h6 class="panel-title">BẢNG BÀI THI CÓ SẴN</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
@@ -38,7 +40,7 @@
         <td> {{c.exam_name}}</td>
         <td>{{c.question_number}}</td>
         <td>{{c.total_marks}}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'viewQuestion' c.id %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'viewQuestion' c.id %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 
       </tr>
       {% endfor %}
