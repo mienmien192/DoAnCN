@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from . import forms
-from .forms import CreateUserForm, StudentForm, CommentForm
+from .forms import CreateUserForm, StudentForm, CommentForm,Coursesadd,Studentsadd,Teachersadd
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views import generic
@@ -531,3 +531,57 @@ def Xoafile_teacher(request,pk):
     teacher=Teacher.objects.get(id=pk)
     Teacher.delete(teacher)
     return redirect('teacher')
+def add(request):
+    
+    if request.method =='POST':
+        form=Coursesadd(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/courses')
+            except:
+                pass
+    else:
+        form=Coursesadd()            
+    
+
+    context={'form':form}
+  
+   
+    return render(request,'accounts/add.html',context)
+def add_student(request):
+    
+    if request.method =='POST':
+        form=Studentsadd(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/student')
+            except:
+                pass
+    else:
+        form=Studentsadd()            
+    
+
+    context={'form':form}
+  
+   
+    return render(request,'accounts/add_student.html',context)
+def add_teacher(request):
+    
+    if request.method =='POST':
+        form=Teachersadd(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/teacher')
+            except:
+                pass
+    else:
+        form=Teachersadd()            
+    
+
+    context={'form':form}
+  
+   
+    return render(request,'accounts/add_teacher.html',context)

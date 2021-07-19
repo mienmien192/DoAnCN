@@ -47,7 +47,15 @@ class QuestionForm(forms.ModelForm):
         widgets = {
             'question': forms.Textarea(attrs={'rows': 3, 'cols': 50})
         }
-class CoursesEdit(forms.ModelForm):
+class Coursesadd(forms.ModelForm):
     class Meta:
-        model:models.Courses
-        fields=["description"]
+        model=Courses
+        fields="__all__"
+class Studentsadd(forms.ModelForm):
+    class Meta:
+        model=Student
+        fields="__all__"
+class Teachersadd(forms.ModelForm):
+    class Meta:
+        model=Teacher
+        fields="__all__"

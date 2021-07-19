@@ -1,0 +1,17 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content%}
+<div style="text-align: center; padding: 20px;">
+    
+    <form action="" method="POST">
+    	{% csrf_token %}
+    	{{form}}
+    	<button class="btn btn-success" type="submit"> Tạo Khoá Học </button>
+    </form>
+  
+
+   
+</div>
+    
+{% endblock%}
