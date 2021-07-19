@@ -500,3 +500,34 @@ def deleteQuestion(request, pk):
 
 def addCourse(request):
     return render(request, 'exam/viewQuestion.html', )
+
+def edit(request,pk):
+    # courses=Courses.objects.get(id=pk)
+    if request.method =='POST':
+        form=CoursesEdit(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/courses')
+            except:
+                pass
+    else:
+        form=CoursesEdit()            
+    
+
+    context={'form':form}
+  
+   
+    return render(request,'accounts/edit.html',context)
+def Xoafile_student(request,pk):
+    student=Student.objects.get(id=pk)
+    Student.delete(student)
+    return redirect('student')
+def Xoafile_khoahoc(request,pk):
+    courses=Courses.objects.get(id=pk)
+    Courses.delete(courses)
+    return redirect('courses')
+def Xoafile_teacher(request,pk):
+    teacher=Teacher.objects.get(id=pk)
+    Teacher.delete(teacher)
+    return redirect('teacher')

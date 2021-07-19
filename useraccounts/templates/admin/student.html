@@ -26,7 +26,7 @@
                     <td>{{student.email}}</td>
                     <td>{{student.avatar}}</td>
                     <td><a href="#"><i style="color: #000; text-decoration: none" class="fas fa-tools"></i></a></td>
-                    <td><a href="#"><i  style="color: #000; text-decoration: none" class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="{% url 'Xoafile_student' student.id  %}"><i  style="color: #000; text-decoration: none" class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 {% endfor %}
             </table>

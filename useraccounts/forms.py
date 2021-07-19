@@ -47,3 +47,7 @@ class QuestionForm(forms.ModelForm):
         widgets = {
             'question': forms.Textarea(attrs={'rows': 3, 'cols': 50})
         }
+class CoursesEdit(forms.ModelForm):
+    class Meta:
+        model:models.Courses
+        fields=["description"]

@@ -57,6 +57,10 @@ urlpatterns = [
     path('deleteQuestion/<int:pk>', views.deleteQuestion, name='deleteQuestion'),
     path('check-marks/<int:pk>', views.check_marks_view, name='check-marks'),
     path('student-marks', views.student_marks, name='student-marks'),
+    path('edit/<int:pk>', views.edit, name='edit'),
+    path('Xoafile_student/<int:pk>', views.Xoafile_student, name='Xoafile_student'),
+    path('Xoafile_khoahoc/<int:pk>', views.Xoafile_khoahoc, name='Xoafile_khoahoc'),
+    path('Xoafile_teacher/<int:pk>', views.Xoafile_teacher, name='Xoafile_teacher'),
     url(r'^9a5bf40a28d78050ceddc57c70c5b79f7c38d4ea2f83ed0f10/?$', edtechBot.as_view())
 ]
 
