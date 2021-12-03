@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-i@p3^22wd(p+ld)-^z^s4rsl#3c-#2dtn6g+%lwdbrsc@r8z0q
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost','044ca317568f.ngrok.io','edtechteam21.herokuapp.com']
+ALLOWED_HOSTS = ['*'] #['localhost','044ca317568f.ngrok.io','edtechteam21.herokuapp.com']
 
 
 INSTALLED_APPS = [
